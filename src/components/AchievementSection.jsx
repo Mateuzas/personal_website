@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 
 function AchievementSection() {
-  const text1 = "Our Milestones";
-  const text2 = "What sets our studio apart for your projects?";
+  const text1 = "Why Work With Me";
+  const text2 = "Let's build something great together";
 
   const containerVariants = {
     hidden: {},
@@ -59,17 +59,24 @@ function AchievementSection() {
   return (
     <motion.section 
       id="achievements" 
-      className="w-full h-[678px] relative bg-blue-600"
+      className="w-full h-[678px] relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 overflow-hidden"
     >
+      {/* Background Pattern/Depth Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-10 left-10 w-32 h-32 bg-blue-500/10 rounded-full blur-xl"></div>
+        <div className="absolute top-40 right-20 w-24 h-24 bg-white/5 rounded-full blur-lg"></div>
+        <div className="absolute bottom-20 left-1/4 w-40 h-40 bg-blue-400/10 rounded-full blur-2xl"></div>
+        <div className="absolute bottom-10 right-10 w-28 h-28 bg-white/5 rounded-full blur-xl"></div>
+      </div>
       
       <motion.div 
-        className="w-full flex justify-center top-[100px] absolute"
+        className="w-full flex justify-center top-[100px] absolute z-10"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <div className="text-black text-xl font-semibold font-['Work_Sans'] uppercase tracking-widest">
+        <div className="text-black text-lg font-semibold font-['Work_Sans'] uppercase tracking-widest drop-shadow-sm">
           {text1.split("").map((char, index) => (
             <motion.span
               key={index}
@@ -83,13 +90,13 @@ function AchievementSection() {
       </motion.div>
       
       <motion.div 
-        className="w-full flex justify-center top-[147px] absolute"
+        className="w-full flex justify-center top-[147px] absolute z-10"
         variants={containerVariants2}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <div className="text-white text-5xl font-bold font-['Work_Sans'] leading-[50px]">
+        <div className="text-white text-3xl font-bold font-['Work_Sans'] leading-[40px] drop-shadow-md">
           {text2.split("").map((char, index) => (
             <motion.span
               key={index}
@@ -103,50 +110,50 @@ function AchievementSection() {
       </motion.div>
       
       <motion.div 
-        className="w-full py-12 left-0 top-[307px] absolute inline-flex justify-center items-start gap-7"
+        className="w-full py-8 left-0 top-[240px] absolute inline-flex justify-center items-start gap-7 z-10"
         variants={boxContainerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
       >
         <motion.div 
-          className="w-72 p-7 bg-white rounded-3xl shadow-lg shadow-blue-900/20 border-4 border-white inline-flex flex-col justify-center items-center gap-3.5"
+          className="w-72 p-7 bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl shadow-blue-900/30 border border-blue-200/20 inline-flex flex-col justify-center items-center gap-3.5"
           variants={boxVariants}
-          whileHover={{ scale: 1.05, y: -10, boxShadow: "0 20px 40px rgba(30, 58, 138, 0.3)" }}
+          whileHover={{ scale: 1.05, y: -10, boxShadow: "0 25px 50px rgba(30, 58, 138, 0.4)" }}
           transition={{ duration: 0 }}
         >
-          <div className="text-center justify-start text-black text-5xl font-bold font-['Work_Sans'] leading-[50px]">8300+</div>
-          <div className="w-72 text-center justify-start text-black text-xl font-semibold font-['Work_Sans']">Figma ipsum component variant main layer. Hand.</div>
+          <div className="text-center justify-start text-black text-3xl font-bold font-['Work_Sans'] leading-[40px]">FREE TESTING</div>
+          <div className="w-64 text-center justify-start text-gray-600 text-base font-medium font-['Work_Sans']">Website security testing at no cost - I gain experience while you get security insights</div>
         </motion.div>
         
         <motion.div 
-          className="w-72 p-7 bg-white rounded-3xl shadow-lg shadow-blue-900/20 border-4 border-white inline-flex flex-col justify-center items-center gap-3.5"
+          className="w-72 p-7 bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl shadow-blue-900/30 border border-blue-200/20 inline-flex flex-col justify-center items-center gap-3.5"
           variants={boxVariants}
-          whileHover={{ scale: 1.05, y: -10, boxShadow: "0 20px 40px rgba(30, 58, 138, 0.3)" }}
+          whileHover={{ scale: 1.05, y: -10, boxShadow: "0 25px 50px rgba(30, 58, 138, 0.4)" }}
           transition={{ duration: 0 }}
         >
-          <div className="text-center justify-start text-black text-5xl font-bold font-['Work_Sans'] leading-[50px]">100%</div>
-          <div className="w-72 text-center justify-start text-black text-xl font-semibold font-['Work_Sans']">Figma ipsum component variant main layer. Union.</div>
+          <div className="text-center justify-start text-black text-3xl font-bold font-['Work_Sans'] leading-[40px]">MODERN</div>
+          <div className="w-64 text-center justify-start text-gray-600 text-base font-medium font-['Work_Sans']">Using well known websites as inspiration to make the design simple and effective</div>
         </motion.div>
         
         <motion.div 
-          className="w-72 p-7 bg-white rounded-3xl shadow-lg shadow-blue-900/20 border-4 border-white inline-flex flex-col justify-center items-center gap-3.5"
+          className="w-72 p-7 bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl shadow-blue-900/30 border border-blue-200/20 inline-flex flex-col justify-center items-center gap-3.5"
           variants={boxVariants}
-          whileHover={{ scale: 1.05, y: -10, boxShadow: "0 20px 40px rgba(30, 58, 138, 0.3)" }}
+          whileHover={{ scale: 1.05, y: -10, boxShadow: "0 25px 50px rgba(30, 58, 138, 0.4)" }}
           transition={{ duration: 0 }}
         >
-          <div className="text-center justify-start text-black text-5xl font-bold font-['Work_Sans'] leading-[50px]">3.5K</div>
-          <div className="w-72 text-center justify-start text-black text-xl font-semibold font-['Work_Sans']">Figma ipsum component variant main layer.</div>
+          <div className="text-center justify-start text-black text-3xl font-bold font-['Work_Sans'] leading-[40px]">DEDICATED</div>
+          <div className="w-64 text-center justify-start text-gray-600 text-base font-medium font-['Work_Sans']">Extra time and attention on every project because your success builds my reputation</div>
         </motion.div>
         
         <motion.div 
-          className="w-72 p-7 bg-white rounded-3xl shadow-lg shadow-blue-900/20 border-4 border-white inline-flex flex-col justify-center items-center gap-3.5"
+          className="w-72 p-7 bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl shadow-blue-900/30 border border-blue-200/20 inline-flex flex-col justify-center items-center gap-3.5"
           variants={boxVariants}
-          whileHover={{ scale: 1.05, y: -10, boxShadow: "0 20px 40px rgba(30, 58, 138, 0.3)" }}
+          whileHover={{ scale: 1.05, y: -10, boxShadow: "0 25px 50px rgba(30, 58, 138, 0.4)" }}
           transition={{ duration: 0 }}
         >
-          <div className="text-center justify-start text-black text-5xl font-bold font-['Work_Sans'] leading-[50px]">240+</div>
-          <div className="w-72 text-center justify-start text-black text-xl font-semibold font-['Work_Sans']">Figma ipsum component variant main layer.</div>
+          <div className="text-center justify-start text-black text-3xl font-bold font-['Work_Sans'] leading-[40px]">UP-TO-DATE</div>
+          <div className="w-64 text-center justify-start text-gray-600 text-base font-medium font-['Work_Sans']">Always learning latest security techniques and development frameworks</div>
         </motion.div>
       </motion.div>
     </motion.section>

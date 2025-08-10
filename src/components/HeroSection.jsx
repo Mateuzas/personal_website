@@ -57,7 +57,7 @@ function HeroSection() {
               Matas Tijusas<br />
             </span>
             <span className="text-neutral-800 text-5xl font-bold font-['Work_Sans'] leading-[75px]">
-              Cybersecurity Student
+              IT Student
             </span>
           </motion.div>
           <motion.div 
@@ -65,7 +65,7 @@ function HeroSection() {
             variants={variants.fadeUp}
             transition={transitions.fastDelayed(0.9)}
           >
-            I'm a cybersecurity student seeking opportunities to help companies test and secure their web applications.
+            I'm studying cybersecurity and seeking opportunities to help companies test and secure their web applications.
           </motion.div>
         </div>
         <motion.div 

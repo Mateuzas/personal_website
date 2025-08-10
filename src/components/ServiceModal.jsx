@@ -17,6 +17,107 @@ function ServiceModal({ isOpen, onClose, service }) {
     }, 300);
   };
 
+  const openFiverrGig = () => {
+    if (service.fiverr) {
+      window.open(service.fiverr, '_blank');
+    }
+  };
+
+  const getServiceSpecificContent = () => {
+    switch (service.title) {
+      case "Website Penetration Testing":
+        return {
+          included: [
+            "SQL injection and XSS vulnerability testing",
+            "Password cracking and authentication bypass attempts", 
+            "Cookie tampering and session management analysis",
+            "Directory traversal and file inclusion testing",
+            "Comprehensive vulnerability assessment report"
+          ],
+          tools: "Kali Linux, Burp Suite, OWASP ZAP, SQLmap, Hydra, Nikto",
+          process: [
+            { title: "Reconnaissance", desc: "Information gathering and target analysis using OSINT techniques." },
+            { title: "Vulnerability Scanning", desc: "Automated and manual scanning for security weaknesses." },
+            { title: "Exploitation", desc: "Ethical exploitation of discovered vulnerabilities to assess impact." },
+            { title: "Reporting", desc: "Detailed report with findings, risk levels, and remediation recommendations." }
+          ]
+        };
+      
+      case "General Security Consulting":
+        return {
+          included: [
+            "Comprehensive security posture assessment",
+            "Threat modeling and risk analysis",
+            "Security policy and procedure review",
+            "Compliance guidance (OWASP, NIST frameworks)",
+            "Security awareness training recommendations"
+          ],
+          tools: "Industry frameworks, threat intelligence feeds, security assessment tools",
+          process: [
+            { title: "Assessment", desc: "Evaluating current security measures and identifying gaps." },
+            { title: "Analysis", desc: "Threat modeling and risk assessment based on your business context." },
+            { title: "Strategy", desc: "Developing tailored security recommendations and roadmap." },
+            { title: "Implementation", desc: "Guidance on implementing security improvements and best practices." }
+          ]
+        };
+      
+      case "Landing Page Design":
+        return {
+          included: [
+            "Custom logo design and brand identity",
+            "Favicon creation for web and mobile",
+            "Complete landing page design in Figma",
+            "Mobile-responsive design layouts",
+            "Style guide and design assets delivery"
+          ],
+          tools: "Figma, Adobe Creative Suite, UI/UX design principles",
+          process: [
+            { title: "Brief & Research", desc: "Understanding your brand, target audience, and design requirements." },
+            { title: "Concept Design", desc: "Creating initial design concepts and brand identity elements." },
+            { title: "Refinement", desc: "Iterating on designs based on feedback and best practices." },
+            { title: "Final Delivery", desc: "Delivering all design assets and style guide documentation." }
+          ]
+        };
+      
+      case "Website Development & Hosting":
+        return {
+          included: [
+            "React-based website development with Vite",
+            "Tailwind CSS for modern, responsive styling",
+            "Performance optimization and SEO setup",
+            "Hosting on Hostinger or GitHub Pages",
+            "Custom domain configuration and SSL setup"
+          ],
+          tools: "React, Vite, Tailwind CSS, Hostinger, GitHub Pages, custom domains",
+          process: [
+            { title: "Planning", desc: "Architecture planning and technology stack selection." },
+            { title: "Development", desc: "Building responsive, high-performance website using modern tools." },
+            { title: "Testing", desc: "Cross-browser testing, performance optimization, and quality assurance." },
+            { title: "Deployment", desc: "Hosting setup, domain configuration, and SSL certificate installation." }
+          ]
+        };
+      
+      default:
+        return {
+          included: [
+            "Comprehensive analysis and planning phase",
+            "Custom solution development tailored to your needs",
+            "Quality assurance and testing procedures",
+            "Ongoing support and maintenance options"
+          ],
+          tools: "Professional industry-standard tools and frameworks",
+          process: [
+            { title: "Discovery", desc: "Understanding your requirements and goals through detailed consultation." },
+            { title: "Strategy", desc: "Developing a comprehensive plan and roadmap for success." },
+            { title: "Implementation", desc: "Executing the solution with attention to detail and quality." },
+            { title: "Delivery", desc: "Launching your solution and providing ongoing support." }
+          ]
+        };
+    }
+  };
+
+  const content = getServiceSpecificContent();
+
   const modalVariants = {
     hidden: { 
       opacity: 0,
@@ -112,29 +213,29 @@ function ServiceModal({ isOpen, onClose, service }) {
                 </p>
               </div>
 
-              {/* Placeholder Content */}
+              {/* What's Included */}
               <div>
                 <h3 className="text-lg font-semibold font-['Work_Sans'] text-neutral-800 mb-3">
                   What's Included
                 </h3>
                 <ul className="space-y-2 text-gray-700 font-['Work_Sans']">
-                  <li className="flex items-start">
-                    <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    Comprehensive analysis and planning phase
-                  </li>
-                  <li className="flex items-start">
-                    <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    Custom solution development tailored to your needs
-                  </li>
-                  <li className="flex items-start">
-                    <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    Quality assurance and testing procedures
-                  </li>
-                  <li className="flex items-start">
-                    <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    Ongoing support and maintenance options
-                  </li>
+                  {content.included.map((item, index) => (
+                    <li key={index} className="flex items-start">
+                      <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      {item}
+                    </li>
+                  ))}
                 </ul>
+              </div>
+
+              {/* Tools & Technologies */}
+              <div>
+                <h3 className="text-lg font-semibold font-['Work_Sans'] text-neutral-800 mb-3">
+                  Tools & Technologies
+                </h3>
+                <p className="text-gray-700 font-['Work_Sans'] leading-relaxed bg-gray-50 rounded-lg p-4">
+                  {content.tools}
+                </p>
               </div>
 
               {/* Process Overview */}
@@ -143,38 +244,16 @@ function ServiceModal({ isOpen, onClose, service }) {
                   Our Process
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <h4 className="font-semibold font-['Work_Sans'] text-blue-600 mb-2">
-                      1. Discovery
-                    </h4>
-                    <p className="text-sm text-gray-600 font-['Work_Sans']">
-                      Understanding your requirements and goals through detailed consultation.
-                    </p>
-                  </div>
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <h4 className="font-semibold font-['Work_Sans'] text-blue-600 mb-2">
-                      2. Strategy
-                    </h4>
-                    <p className="text-sm text-gray-600 font-['Work_Sans']">
-                      Developing a comprehensive plan and roadmap for success.
-                    </p>
-                  </div>
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <h4 className="font-semibold font-['Work_Sans'] text-blue-600 mb-2">
-                      3. Implementation
-                    </h4>
-                    <p className="text-sm text-gray-600 font-['Work_Sans']">
-                      Executing the solution with attention to detail and quality.
-                    </p>
-                  </div>
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <h4 className="font-semibold font-['Work_Sans'] text-blue-600 mb-2">
-                      4. Delivery
-                    </h4>
-                    <p className="text-sm text-gray-600 font-['Work_Sans']">
-                      Launching your solution and providing ongoing support.
-                    </p>
-                  </div>
+                  {content.process.map((step, index) => (
+                    <div key={index} className="bg-gray-50 rounded-lg p-4">
+                      <h4 className="font-semibold font-['Work_Sans'] text-blue-600 mb-2">
+                        {index + 1}. {step.title}
+                      </h4>
+                      <p className="text-sm text-gray-600 font-['Work_Sans']">
+                        {step.desc}
+                      </p>
+                    </div>
+                  ))}
                 </div>
               </div>
 
@@ -207,6 +286,34 @@ function ServiceModal({ isOpen, onClose, service }) {
                   </motion.button>
                 </div>
               </div>
+
+              {/* Fiverr Section - Only show for services with Fiverr links */}
+              {service.fiverr && (
+                <div className="border-t border-gray-200 pt-6 mt-6">
+                  <div className="text-center">
+                    <p className="text-gray-600 font-['Work_Sans'] mb-3">
+                      Interested? You can also check me out on Fiverr for quick package options
+                    </p>
+                    <motion.button
+                      className="inline-flex items-center gap-2 px-4 py-2 text-green-600 hover:text-green-700 font-medium font-['Work_Sans'] transition-colors duration-200"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      transition={{ duration: 0 }}
+                      onClick={openFiverrGig}
+                    >
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="flex-shrink-0">
+                        <rect width="20" height="20" rx="3" fill="currentColor" fillOpacity="0.1"/>
+                        <path d="M4 4.5H16V5.5H4V4.5Z" fill="currentColor"/>
+                        <path d="M4 7.5H16V8.5H4V7.5Z" fill="currentColor"/>
+                        <path d="M4 10.5H16V11.5H4V10.5Z" fill="currentColor"/>
+                        <path d="M4 13.5H16V14.5H4V13.5Z" fill="currentColor"/>
+                        <circle cx="14" cy="5" r="2" fill="currentColor"/>
+                      </svg>
+                      View on Fiverr
+                    </motion.button>
+                  </div>
+                </div>
+              )}
             </div>
           </motion.div>
         </motion.div>

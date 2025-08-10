@@ -1,45 +1,244 @@
 import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { sendWeb3Form } from '../utils/emailService';
 
 function ContactMeSection() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({ type: '', message: '' });
+
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: '', message: '' });
+
+    try {
+      // Send email using Web3Forms
+      const result = await sendWeb3Form(formData);
+
+      if (result.success) {
+        setSubmitStatus({
+          type: 'success',
+          message: 'Thank you! Your message has been sent successfully. I\'ll get back to you soon.'
+        });
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setSubmitStatus({
+        type: 'error',
+        message: 'Sorry, there was an error sending your message. Please try again or contact me directly at matas.tijusas@outlook.com'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <motion.section 
       id="contact" 
-      className="py-20 px-4 bg-white text-center"
+      className="relative bg-blue-600 py-20 px-4 lg:px-0 overflow-hidden"
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.3 }}
     >
-      <motion.h2 
-        className="text-3xl font-bold mb-4"
-        initial={{ opacity: 0, scale: 0.8 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        viewport={{ once: true }}
-      >
-        Contact Me
-      </motion.h2>
-      <motion.p 
-        className="mb-6"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.4 }}
-        viewport={{ once: true }}
-      >
-        Feel free to reach out for collaborations or just a friendly hello!
-      </motion.p>
-      <motion.a 
-        href="mailto:your@email.com" 
-        className="text-blue-600 underline"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.6 }}
-        viewport={{ once: true }}
-        whileHover={{ scale: 1.1, color: "#1d4ed8" }}
-        whileTap={{ scale: 0.95 }}
-      >
-        your@email.com
-      </motion.a>
+      {/* Background Decorative Circles */}
+      <div className="absolute w-[786px] h-[786px] right-[-200px] lg:right-[-100px] top-[2px] bg-blue-600 rounded-full border-[80px] border-white/5 hidden lg:block" />
+      <div className="absolute w-56 h-56 left-[-57px] bottom-[100px] bg-blue-600 rounded-full border-[40px] border-white/5 hidden lg:block" />
+      
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Header */}
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <motion.div 
+            className="text-black text-xl font-semibold font-['Work_Sans'] uppercase tracking-widest mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            Contact Me
+          </motion.div>
+          <motion.h2 
+            className="text-white text-3xl lg:text-5xl font-bold font-['Work_Sans'] leading-[50px] max-w-[684px] mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            Request Free Consultancy
+          </motion.h2>
+        </motion.div>
+
+        {/* Main Content */}
+        <div className="flex flex-col lg:flex-row justify-center items-start gap-7 lg:px-12">
+          
+          {/* Contact Info Card */}
+          <motion.div 
+            className="w-full max-w-[514px] h-auto p-7 bg-white rounded-2xl flex flex-col justify-start items-start gap-10"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <div className="justify-start">
+              <div className="text-zinc-800 text-base font-bold font-['Work_Sans'] leading-tight mb-1">
+                Hotline 24/7
+              </div>
+              <div className="text-zinc-800 text-2xl font-bold font-['Work_Sans'] leading-loose">
+                matas.tijusas@outlook.com
+              </div>
+            </div>
+            <div className="self-stretch justify-start">
+              <div className="mb-2">
+                <span className="text-zinc-800 text-base font-semibold font-['Work_Sans'] leading-relaxed">Address: </span>
+                <span className="text-zinc-800 text-base font-normal font-['Work_Sans'] leading-relaxed">
+                  Available for Remote Work Worldwide
+                </span>
+              </div>
+              <div className="mb-2">
+                <span className="text-zinc-800 text-base font-semibold font-['Work_Sans'] leading-relaxed">Email: </span>
+                <span className="text-zinc-800 text-base font-normal font-['Work_Sans'] leading-relaxed">
+                  matas.tijusas@outlook.com
+                </span>
+              </div>
+              <div className="mb-2">
+                <span className="text-zinc-800 text-base font-semibold font-['Work_Sans'] leading-relaxed">LinkedIn: </span>
+                <span className="text-zinc-800 text-base font-normal font-['Work_Sans'] leading-relaxed">
+                  Available upon request
+                </span>
+              </div>
+              <div>
+                <span className="text-zinc-800 text-base font-semibold font-['Work_Sans'] leading-relaxed">Availability: </span>
+                <span className="text-zinc-800 text-base font-normal font-['Work_Sans'] leading-relaxed">
+                  Open to cybersecurity opportunities
+                </span>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Contact Form */}
+          <motion.form 
+            onSubmit={handleSubmit}
+            className="flex flex-col justify-start items-start gap-3.5 w-full max-w-[515px]"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            viewport={{ once: true }}
+          >
+            {/* Name and Email Row */}
+            <div className="flex flex-col sm:flex-row justify-start items-start gap-3.5 w-full">
+              <motion.input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+                placeholder="Name*"
+                className="flex-1 w-full sm:w-64 p-3.5 bg-white rounded-[5px] text-zinc-800 text-base font-normal font-['Work_Sans'] leading-tight placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-white/50"
+                required
+                whileFocus={{ scale: 1.02 }}
+                transition={{ duration: 0.2 }}
+              />
+              <motion.input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                placeholder="Email Address*"
+                className="flex-1 w-full sm:w-64 p-3.5 bg-white rounded-[5px] text-zinc-800 text-base font-normal font-['Work_Sans'] leading-tight placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-white/50"
+                required
+                whileFocus={{ scale: 1.02 }}
+                transition={{ duration: 0.2 }}
+              />
+            </div>
+
+            {/* Subject */}
+            <motion.input
+              type="text"
+              name="subject"
+              value={formData.subject}
+              onChange={handleInputChange}
+              placeholder="Subject (Optional)"
+              className="w-full p-3.5 bg-white rounded-[5px] text-zinc-800 text-base font-normal font-['Work_Sans'] leading-tight placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-white/50"
+              whileFocus={{ scale: 1.01 }}
+              transition={{ duration: 0.2 }}
+            />
+
+            {/* Message */}
+            <motion.textarea
+              name="message"
+              value={formData.message}
+              onChange={handleInputChange}
+              placeholder="How can I help you?"
+              rows={5}
+              className="w-full p-3.5 bg-white rounded-[5px] text-zinc-800 text-base font-normal font-['Work_Sans'] leading-tight placeholder-stone-500 resize-none focus:outline-none focus:ring-2 focus:ring-white/50"
+              required
+              whileFocus={{ scale: 1.01 }}
+              transition={{ duration: 0.2 }}
+            />
+
+            {/* Status Message */}
+            {submitStatus.message && (
+              <motion.div
+                className={`w-full p-4 rounded-lg text-sm font-medium ${
+                  submitStatus.type === 'success' 
+                    ? 'bg-green-100 text-green-800 border border-green-200' 
+                    : 'bg-red-100 text-red-800 border border-red-200'
+                }`}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                {submitStatus.message}
+              </motion.div>
+            )}
+
+            {/* Submit Button */}
+            <motion.button
+              type="submit"
+              disabled={isSubmitting}
+              className={`px-8 py-4 rounded-[50px] text-xl font-bold font-['Work_Sans'] leading-tight focus:outline-none focus:ring-2 focus:ring-white/50 transition-colors duration-200 border ${
+                isSubmitting 
+                  ? 'bg-gray-300 text-gray-500 border-gray-300 cursor-not-allowed' 
+                  : 'bg-white text-blue-600 border-blue-600 hover:bg-blue-500 hover:text-white'
+              }`}
+              whileHover={!isSubmitting ? { scale: 1.05 } : {}}
+              whileTap={!isSubmitting ? { scale: 0.95 } : {}}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            >
+              {isSubmitting ? 'Sending...' : 'Request Now'}
+            </motion.button>
+          </motion.form>
+        </div>
+      </div>
     </motion.section>
   );
 }

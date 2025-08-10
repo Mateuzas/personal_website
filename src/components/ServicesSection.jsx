@@ -11,26 +11,100 @@ function ServicesSection() {
 
   const services = [
     {
-      title: "Website / App Design UX / UI Design",
-      description: "Creating Engaging Digital Experiences for Websites and Apps through UX/UI Design"
+      title: "Website Penetration Testing",
+      description: "Comprehensive security testing to identify vulnerabilities in your web applications using standard techniques.",
+      fiverr: "" // You can add your Fiverr link here later
     },
     {
-      title: "Strategic Marketing and Creative Content",
-      description: "Elevating Brands and Engagement through Strategic Marketing and Creative Content"
+      title: "General Security Consulting",
+      description: "Expert cybersecurity guidance to strengthen your overall security posture and protect your digital assets from threats.",
+      fiverr: "" // You can add your Fiverr link here later
     },
     {
-      title: "Multivendor eCommerce Website Solutions",
-      description: "Unlocking the World of Multivendor eCommerce Websites"
+      title: "Landing Page Design",
+      description: "Professional logo, favicon, and complete landing page design in Figma with mobile-responsive layouts and brand identity.",
+      fiverr: "https://www.fiverr.com/s/jj1dWQ9"
     },
     {
-      title: "Crafting Brand Strategies and Artistic Direction",
-      description: "Delving Deep into Crafting Comprehensive Brand Strategies and Offering Expert Guidance"
-    },
-    {
-      title: "Mobile App Development & Optimization",
-      description: "Building Responsive and User-Friendly Mobile Applications for Enhanced User Experience"
+      title: "Website Development",
+      description: "Full-stack web development using React, Vite, and Tailwind CSS with professional hosting on Hostinger or GitHub Pages.",
+      fiverr: "https://www.fiverr.com/s/jj1dWQ9"
     }
   ];
+
+  const getServiceIcon = (index, isBlue) => {
+    const iconColor = isBlue ? 'white' : '#2563eb';
+    
+    switch (index) {
+      case 0: // Website Penetration Testing - SQL/Database with security elements
+        return (
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" className="transition-colors duration-500">
+            {/* Database cylinder */}
+            <ellipse cx="32" cy="18" rx="16" ry="6" stroke={iconColor} strokeWidth="2" fill="none"/>
+            <ellipse cx="32" cy="26" rx="16" ry="6" stroke={iconColor} strokeWidth="2" fill="none"/>
+            <ellipse cx="32" cy="34" rx="16" ry="6" stroke={iconColor} strokeWidth="2" fill="none"/>
+            <path d="M16 18V34" stroke={iconColor} strokeWidth="2"/>
+            <path d="M48 18V34" stroke={iconColor} strokeWidth="2"/>
+            {/* SQL text */}
+            <text x="32" y="28" textAnchor="middle" fill={iconColor} fontSize="8" fontFamily="monospace" fontWeight="bold">SQL</text>
+            {/* Security scanner lines */}
+            <path d="M52 42L58 42" stroke={iconColor} strokeWidth="2" strokeLinecap="round"/>
+            <path d="M52 46L56 46" stroke={iconColor} strokeWidth="2" strokeLinecap="round"/>
+            <path d="M52 50L60 50" stroke={iconColor} strokeWidth="2" strokeLinecap="round"/>
+            {/* Warning triangle */}
+            <path d="M8 48L12 40L16 48Z" stroke={iconColor} strokeWidth="2" fill="none"/>
+            <circle cx="12" cy="45" r="1" fill={iconColor}/>
+          </svg>
+        );
+      
+      case 1: // General Security Consulting - Simple lock
+        return (
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" className="transition-colors duration-500">
+            {/* Lock body */}
+            <rect x="20" y="28" width="24" height="20" rx="4" stroke={iconColor} strokeWidth="2" fill="none"/>
+            {/* Lock shackle */}
+            <path d="M26 28V22C26 18.6863 28.6863 16 32 16C35.3137 16 38 18.6863 38 22V28" 
+                  stroke={iconColor} strokeWidth="2" fill="none"/>
+            {/* Keyhole */}
+            <circle cx="32" cy="36" r="3" fill={iconColor}/>
+            <rect x="31" y="36" width="2" height="6" fill={iconColor}/>
+          </svg>
+        );
+      
+      case 2: // Landing Page Design - Design tools (Figma-like)
+        return (
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" className="transition-colors duration-500">
+            <rect x="16" y="12" width="32" height="40" rx="2" stroke={iconColor} strokeWidth="2" fill="none"/>
+            <rect x="20" y="18" width="24" height="4" rx="1" fill={iconColor}/>
+            <rect x="20" y="26" width="16" height="2" rx="1" fill={iconColor}/>
+            <rect x="20" y="30" width="20" height="2" rx="1" fill={iconColor}/>
+            <rect x="20" y="34" width="12" height="2" rx="1" fill={iconColor}/>
+            <circle cx="26" cy="42" r="4" stroke={iconColor} strokeWidth="2" fill="none"/>
+            <rect x="32" y="40" width="8" height="4" rx="1" stroke={iconColor} strokeWidth="2" fill="none"/>
+            <path d="M12 8L16 12L12 16" stroke={iconColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M52 8L48 12L52 16" stroke={iconColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        );
+      
+      case 3: // Website Development - Code with hosting
+        return (
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" className="transition-colors duration-500">
+            <rect x="8" y="16" width="48" height="32" rx="4" stroke={iconColor} strokeWidth="2" fill="none"/>
+            <rect x="8" y="16" width="48" height="8" rx="4" fill={iconColor} fillOpacity="0.2"/>
+            <circle cx="14" cy="20" r="1.5" fill={iconColor}/>
+            <circle cx="18" cy="20" r="1.5" fill={iconColor}/>
+            <circle cx="22" cy="20" r="1.5" fill={iconColor}/>
+            <path d="M16 32L20 28L16 24" stroke={iconColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M24 36H32" stroke={iconColor} strokeWidth="2" strokeLinecap="round"/>
+            <circle cx="44" cy="32" r="6" stroke={iconColor} strokeWidth="2" fill="none"/>
+            <path d="M41 32L43 34L47 30" stroke={iconColor} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        );
+      
+      default:
+        return null;
+    }
+  };
 
   const handleMouseEnter = (index) => {
     setHoveredIndex(index);
@@ -99,10 +173,10 @@ function ServicesSection() {
           viewport={viewport}
         >
           <span className="text-neutral-800 text-3xl lg:text-5xl font-bold font-['Work_Sans'] leading-[40px] lg:leading-[50px]">
-            Exploring My Design{' '}
+            Exploring My Technical{' '}
           </span>
           <span className="text-blue-600 text-3xl lg:text-5xl font-bold font-['Work_Sans'] leading-[40px] lg:leading-[50px]">
-            Skills
+            Expertise
           </span>
         </motion.div>
         <motion.div 
@@ -113,7 +187,7 @@ function ServicesSection() {
           transition={transitions.fastDelayed(0.5)}
           viewport={viewport}
         >
-          We transform your ideas into a distinctive web project that both inspires you and captivates your customers
+          From cybersecurity consulting to modern web development, I deliver comprehensive solutions that protect and enhance your digital presence
         </motion.div>
       </motion.div>
 
@@ -183,48 +257,8 @@ function ServicesSection() {
               }}
             >
               {/* Icon Container */}
-              <div className="w-80 h-24 relative overflow-hidden">
-                <div className="w-20 h-20 relative overflow-hidden">
-                  <div className={`w-5 h-5 left-[49.85px] top-[4.52px] absolute outline outline-2 outline-offset-[-1px] transition-colors duration-500 ${
-                    isCardBlue(index) ? 'outline-white' : 'outline-blue-600'
-                  }`} />
-                  <div className={`w-5 h-11 left-[55.18px] top-[27.60px] absolute outline outline-2 outline-offset-[-1px] transition-colors duration-500 ${
-                    isCardBlue(index) ? 'outline-white' : 'outline-blue-600'
-                  }`} />
-                  <div className={`w-1.5 h-1.5 left-[10.08px] top-[16.60px] absolute outline outline-2 outline-offset-[-1px] transition-colors duration-500 ${
-                    isCardBlue(index) ? 'outline-white' : 'outline-blue-600'
-                  }`} />
-                  <div className={`w-1.5 h-1.5 left-[20.42px] top-[16.60px] absolute outline outline-2 outline-offset-[-1px] transition-colors duration-500 ${
-                    isCardBlue(index) ? 'outline-white' : 'outline-blue-600'
-                  }`} />
-                  <div className={`w-1.5 h-1.5 left-[30.75px] top-[16.60px] absolute outline outline-2 outline-offset-[-1px] transition-colors duration-500 ${
-                    isCardBlue(index) ? 'outline-white' : 'outline-blue-600'
-                  }`} />
-                  <div className={`w-14 h-4 left-[1.10px] top-[11.44px] absolute outline outline-2 outline-offset-[-1px] transition-colors duration-500 ${
-                    isCardBlue(index) ? 'outline-white' : 'outline-blue-600'
-                  }`} />
-                  <div className={`w-2 h-2 left-[55.92px] top-[18.86px] absolute outline outline-2 outline-offset-[-1px] transition-colors duration-500 ${
-                    isCardBlue(index) ? 'outline-white' : 'outline-blue-600'
-                  }`} />
-                  <div className={`w-2.5 h-3.5 left-[64.63px] top-[13.60px] absolute outline outline-2 outline-offset-[-1px] transition-colors duration-500 ${
-                    isCardBlue(index) ? 'outline-white' : 'outline-blue-600'
-                  }`} />
-                  <div className={`w-16 h-11 left-[1.10px] top-[27.60px] absolute outline outline-2 outline-offset-[-1px] transition-colors duration-500 ${
-                    isCardBlue(index) ? 'outline-white' : 'outline-blue-600'
-                  }`} />
-                  <div className={`w-5 h-4 left-[36.09px] top-[19.17px] absolute outline outline-2 outline-offset-[-1px] transition-colors duration-500 ${
-                    isCardBlue(index) ? 'outline-white' : 'outline-blue-600'
-                  }`} />
-                  <div className={`w-5 h-5 left-[10.08px] top-[41.66px] absolute outline outline-2 outline-offset-[-1px] transition-colors duration-500 ${
-                    isCardBlue(index) ? 'outline-white' : 'outline-blue-600'
-                  }`} />
-                  <div className={`w-5 h-1.5 left-[34.52px] top-[42.25px] absolute outline outline-2 outline-offset-[-1px] transition-colors duration-500 ${
-                    isCardBlue(index) ? 'outline-white' : 'outline-blue-600'
-                  }`} />
-                  <div className={`w-5 h-1.5 left-[34.52px] top-[53.65px] absolute outline outline-2 outline-offset-[-1px] transition-colors duration-500 ${
-                    isCardBlue(index) ? 'outline-white' : 'outline-blue-600'
-                  }`} />
-                </div>
+              <div className="w-80 h-20 relative overflow-hidden mb-2">
+                {getServiceIcon(index, isCardBlue(index))}
               </div>
 
               {/* Title */}

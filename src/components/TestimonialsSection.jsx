@@ -3,25 +3,11 @@ import { motion } from 'framer-motion';
 function TestimonialsSection() {
   const testimonials = [
     {
-      name: "Sarah Johnson",
-      position: "IT Director",
-      content: "Matas provided exceptional cybersecurity consultation for our company. His expertise in threat assessment and security implementation helped us strengthen our defenses significantly.",
-      isHighlighted: false,
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&h=387&q=80"
-    },
-    {
-      name: "David Williams",
-      position: "Chief Technology Officer",
-      content: "Matas's cybersecurity expertise and professional approach made our security transformation seamless. His knowledge of modern threats and defense strategies is outstanding.",
+      name: "Coming Soon",
+      position: "Client Testimonials",
+      content: "Real client testimonials will be displayed here as I complete more projects and gather feedback from satisfied customers.",
       isHighlighted: true,
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&h=387&q=80"
-    },
-    {
-      name: "Lisa Rodriguez",
-      position: "Operations Manager", 
-      content: "The security audit and recommendations provided by Matas were comprehensive and actionable. Our organization's security has improved dramatically since implementing his suggestions.",
-      isHighlighted: false,
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&h=387&q=80"
+      image: null // Using SVG placeholder instead
     }
   ];
 
@@ -126,11 +112,11 @@ function TestimonialsSection() {
             }}
           >
             {/* Profile Image */}
-            <img 
-              className="w-24 h-24 rounded-full object-cover" 
-              src={testimonial.image}
-              alt={`${testimonial.name} profile`}
-            />
+            <div className="w-24 h-24 rounded-full bg-gray-200 flex items-center justify-center">
+              <svg className="w-12 h-12 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+              </svg>
+            </div>
             
             {/* Star Rating */}
             <div className="flex justify-center items-center gap-1">

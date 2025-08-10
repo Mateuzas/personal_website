@@ -33,7 +33,7 @@ function TopSection() {
           <a href="#hero" onClick={(e) => handleSmoothScroll(e, 'hero')} className="text-white text-lg font-medium font-['Work_Sans'] cursor-pointer">Home</a>
           <a href="#about" onClick={(e) => handleSmoothScroll(e, 'about')} className="text-white text-lg font-medium font-['Work_Sans'] whitespace-nowrap cursor-pointer">About Me</a>
           <a href="#services" onClick={(e) => handleSmoothScroll(e, 'services')} className="text-white text-lg font-medium font-['Work_Sans'] cursor-pointer">Services</a>
-          <a href="#achievements" onClick={(e) => handleSmoothScroll(e, 'achievements')} className="text-white text-lg font-medium font-['Work_Sans'] cursor-pointer">Achievements</a>
+          <a href="#achievements" onClick={(e) => handleSmoothScroll(e, 'achievements')} className="text-white text-lg font-medium font-['Work_Sans'] cursor-pointer">Why me?</a>
           <a href="#portfolio" onClick={(e) => handleSmoothScroll(e, 'portfolio')} className="text-white text-lg font-medium font-['Work_Sans'] cursor-pointer">Portfolio</a>
           <a href="#testimonials" onClick={(e) => handleSmoothScroll(e, 'testimonials')} className="text-white text-lg font-medium font-['Work_Sans'] cursor-pointer">Testimonials</a>
           <a href="#contact" onClick={(e) => handleSmoothScroll(e, 'contact')} className="text-white text-lg font-medium font-['Work_Sans'] whitespace-nowrap cursor-pointer">Contact Me</a>

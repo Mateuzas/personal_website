@@ -3,6 +3,7 @@ import { useState } from 'react';
 import skillsImage from '../../assets/IMG_4987.jpg';
 import certificationImage from '../../assets/IMG_3265.png';
 import educationImage from '../../assets/images.jpg';
+import moreaboutmeImage from '../../assets/IMG_4922.jpg';
 
 const sections = [
   {
@@ -11,89 +12,77 @@ const sections = [
     image: skillsImage,
     content: (
       <>
-        <motion.div 
+        <div 
           className="text-black text-lg lg:text-xl font-semibold font-['Work_Sans'] uppercase tracking-widest"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
         >
           About Me
-        </motion.div>
-        <motion.div 
+        </div>
+        <div 
           className="text-left max-w-[572px]"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <span className="text-blue-600 text-3xl lg:text-5xl font-bold font-['Work_Sans']">3+ Year's Experience</span>
+          <span className="text-blue-600 text-2xl lg:text-4xl font-bold font-['Work_Sans']">Gaining experience</span>
           <br />
-          <span className="text-neutral-800 text-3xl lg:text-5xl font-bold font-['Work_Sans']">in Cybersecurity</span>
-        </motion.div>
-        <motion.div 
+          <span className="text-neutral-800 text-2xl lg:text-4xl font-bold font-['Work_Sans']">in Cybersecurity</span>
+        </div>
+        <div 
           className="max-w-[620px] text-left"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
         >
           <span className="text-neutral-800 text-base lg:text-lg font-normal font-['Work_Sans'] leading-normal">
-            Hello there! I'm <span className="font-bold">Matas Tijusas</span>. I specialize in cybersecurity and web application testing, and I'm deeply passionate and committed to my craft. With <span className="font-bold">3+ years</span> of experience as a cybersecurity student and professional.
+            Hello there! I'm <span className="font-bold">Matas Tijusas</span>. I specialize in cybersecurity and web application testing, and I'm deeply passionate and committed to learning and gaining experience in this craft. 
           </span>
-        </motion.div>
-        <div className="w-full max-w-[620px] space-y-6 mt-6">
+        </div>
+        <div className="w-full max-w-[620px] space-y-4 mt-4">
           {/* Skill 1 */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-          >
-            <div className="text-neutral-800 text-lg lg:text-xl font-semibold font-['Work_Sans'] mb-2">
+          <div>
+            <div className="text-neutral-800 text-base lg:text-lg font-semibold font-['Work_Sans'] mb-1">
               Penetration Testing & Security Assessment
+            </div>
+            <div className="text-gray-600 text-sm font-['Work_Sans'] mb-2">
+              Learning through hands-on labs and cybersecurity platforms like TryHackMe.
             </div>
             <div className="w-full h-4 bg-zinc-100 rounded-[10px] relative overflow-hidden">
               <motion.div 
                 className="h-full bg-blue-600 rounded-[10px]"
                 initial={{ width: 0 }}
-                animate={{ width: "95%" }}
+                animate={{ width: "35%" }}
                 transition={{ duration: 1, delay: 0.7 }}
               />
             </div>
-          </motion.div>
+          </div>
           {/* Skill 2 */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-          >
-            <div className="text-neutral-800 text-lg lg:text-xl font-semibold font-['Work_Sans'] mb-2">
+          <div>
+            <div className="text-neutral-800 text-base lg:text-lg font-semibold font-['Work_Sans'] mb-1">
               Web Application Security Testing
+            </div>
+            <div className="text-gray-600 text-sm font-['Work_Sans'] mb-2">
+              Practicing with web security challenges and studying OWASP Top 10.
             </div>
             <div className="w-full h-4 bg-zinc-100 rounded-[10px] relative overflow-hidden">
               <motion.div 
                 className="h-full bg-blue-600 rounded-[10px]"
                 initial={{ width: 0 }}
-                animate={{ width: "90%" }}
+                animate={{ width: "40%" }}
                 transition={{ duration: 1, delay: 0.8 }}
               />
             </div>
-          </motion.div>
+          </div>
           {/* Skill 3 */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-          >
-            <div className="text-neutral-800 text-lg lg:text-xl font-semibold font-['Work_Sans'] mb-2">
-              Vulnerability Research & Analysis
+          <div>
+            <div className="text-neutral-800 text-base lg:text-lg font-semibold font-['Work_Sans'] mb-1">
+              Web Design & Development
+            </div>
+            <div className="text-gray-600 text-sm font-['Work_Sans'] mb-2">
+              Creating modern, responsive websites using React, Vite, Tailwind CSS and Figma for design.
             </div>
             <div className="w-full h-4 bg-zinc-100 rounded-[10px] relative overflow-hidden">
               <motion.div 
                 className="h-full bg-blue-600 rounded-[10px]"
                 initial={{ width: 0 }}
-                animate={{ width: "85%" }}
+                animate={{ width: "50%" }}
                 transition={{ duration: 1, delay: 0.9 }}
               />
             </div>
-          </motion.div>
+          </div>
         </div>
       </>
     ),
@@ -104,74 +93,53 @@ const sections = [
     image: certificationImage,
     content: (
       <>
-        <motion.div 
+        <div 
           className="text-black text-lg lg:text-xl font-semibold font-['Work_Sans'] uppercase tracking-widest"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
         >
           Certifications
-        </motion.div>
-        <motion.div 
+        </div>
+        <div 
           className="text-left max-w-[572px]"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <span className="text-blue-600 text-3xl lg:text-5xl font-bold font-['Work_Sans']">Industry Recognized</span>
+          <span className="text-blue-600 text-2xl lg:text-4xl font-bold font-['Work_Sans']">Industry Recognized</span>
           <br />
-          <span className="text-neutral-800 text-3xl lg:text-5xl font-bold font-['Work_Sans']">Certifications</span>
-        </motion.div>
-        <motion.div 
+          <span className="text-neutral-800 text-2xl lg:text-4xl font-bold font-['Work_Sans']">Certifications</span>
+        </div>
+        <div 
           className="max-w-[620px] text-left"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
         >
           <span className="text-neutral-800 text-base lg:text-lg font-normal font-['Work_Sans'] leading-normal">
-            I have earned several industry-recognized certifications that validate my expertise in cybersecurity. These certifications demonstrate my commitment to staying current with the latest security practices and methodologies.
+            I am currently preparing for the CompTIA Security+ certification and plan to pursue additional industry-standard cybersecurity certifications to further deepen my expertise and advance my career in the field.
           </span>
-        </motion.div>
-        <div className="w-full max-w-[620px] space-y-4 mt-6">
+        </div>
+        <div className="w-full max-w-[620px] space-y-3 mt-4">
           {/* Certification 1 */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-          >
-            <div className="text-neutral-800 text-lg lg:text-xl font-semibold font-['Work_Sans'] mb-2">
-              🏆 CompTIA Security+ (Expected 2025)
+          <div>
+            <div className="text-neutral-800 text-base lg:text-lg font-semibold font-['Work_Sans'] mb-1">
+              CompTIA Security+ (Expected 2025)
             </div>
-            <div className="text-gray-600 text-base font-['Work_Sans']">
-              Fundamental cybersecurity certification covering network security, compliance, and operational security principles.
+            <div className="text-gray-600 text-sm font-['Work_Sans']">
+              Fundamental cybersecurity certification covering network security and compliance.
             </div>
-          </motion.div>
+          </div>
           {/* Certification 2 */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-          >
-            <div className="text-neutral-800 text-lg lg:text-xl font-semibold font-['Work_Sans'] mb-2">
-              🔐 Certified Ethical Hacker (CEH) - In Progress
+          <div>
+            <div className="text-neutral-800 text-base lg:text-lg font-semibold font-['Work_Sans'] mb-1">
+              Certified Ethical Hacker (CEH) - In Progress
             </div>
-            <div className="text-gray-600 text-base font-['Work_Sans']">
-              Advanced certification focused on ethical hacking methodologies and penetration testing techniques.
+            <div className="text-gray-600 text-sm font-['Work_Sans']">
+              Advanced certification focused on ethical hacking and penetration testing.
             </div>
-          </motion.div>
+          </div>
           {/* Certification 3 */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-          >
-            <div className="text-neutral-800 text-lg lg:text-xl font-semibold font-['Work_Sans'] mb-2">
-              🎯 OSCP (Offensive Security Certified Professional) - Planned
+          <div>
+            <div className="text-neutral-800 text-base lg:text-lg font-semibold font-['Work_Sans'] mb-1">
+              OSCP (Offensive Security Certified Professional) - Planned
             </div>
-            <div className="text-gray-600 text-base font-['Work_Sans']">
-              Hands-on penetration testing certification requiring practical exploitation of vulnerabilities in real environments.
+            <div className="text-gray-600 text-sm font-['Work_Sans']">
+              Hands-on penetration testing certification requiring practical exploitation.
             </div>
-          </motion.div>
+          </div>
         </div>
       </>
     ),
@@ -182,74 +150,53 @@ const sections = [
     image: educationImage,
     content: (
       <>
-        <motion.div 
+        <div 
           className="text-black text-lg lg:text-xl font-semibold font-['Work_Sans'] uppercase tracking-widest"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
         >
           Education
-        </motion.div>
-        <motion.div 
+        </div>
+        <div 
           className="text-left max-w-[572px]"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <span className="text-blue-600 text-3xl lg:text-5xl font-bold font-['Work_Sans']">Academic Foundation</span>
+          <span className="text-blue-600 text-2xl lg:text-4xl font-bold font-['Work_Sans']">Current Studies &</span>
           <br />
-          <span className="text-neutral-800 text-3xl lg:text-5xl font-bold font-['Work_Sans']">in Cybersecurity</span>
-        </motion.div>
-        <motion.div 
+          <span className="text-neutral-800 text-2xl lg:text-4xl font-bold font-['Work_Sans']">Future Plans</span>
+        </div>
+        <div 
           className="max-w-[620px] text-left"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
         >
           <span className="text-neutral-800 text-base lg:text-lg font-normal font-['Work_Sans'] leading-normal">
-            My educational background provides a strong foundation in cybersecurity principles, methodologies, and emerging technologies. I have focused on both theoretical knowledge and practical applications.
+            I am currently pursuing my IT Business degree at the University of Twente, graduating in 2026. After that, I plan to pursue a Master's in Cybersecurity at a Dutch university. Meanwhile, I'm actively learning cybersecurity through hands-on practice and ethical testing.
           </span>
-        </motion.div>
-        <div className="w-full max-w-[620px] space-y-4 mt-6">
+        </div>
+        <div className="w-full max-w-[620px] space-y-3 mt-4">
           {/* Education 1 */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-          >
-            <div className="text-neutral-800 text-lg lg:text-xl font-semibold font-['Work_Sans'] mb-2">
-              🎓 Bachelor of Science in Cybersecurity
+          <div>
+            <div className="text-neutral-800 text-base lg:text-lg font-semibold font-['Work_Sans'] mb-1">
+              Bachelor of IT Business - University of Twente (2026)
             </div>
-            <div className="text-gray-600 text-base font-['Work_Sans']">
-              Comprehensive program covering cybersecurity fundamentals, risk management, and security architecture design.
+            <div className="text-gray-600 text-sm font-['Work_Sans']">
+              Currently studying IT Business with focus on technology management and digital transformation.
             </div>
-          </motion.div>
+          </div>
           {/* Education 2 */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-          >
-            <div className="text-neutral-800 text-lg lg:text-xl font-semibold font-['Work_Sans'] mb-2">
-              🔍 Network Security & Digital Forensics
+          <div>
+            <div className="text-neutral-800 text-base lg:text-lg font-semibold font-['Work_Sans'] mb-1">
+              Master's in Cybersecurity - Netherlands (Planned 2026+)
             </div>
-            <div className="text-gray-600 text-base font-['Work_Sans']">
-              Specialized coursework in network defense strategies and digital evidence analysis techniques.
+            <div className="text-gray-600 text-sm font-['Work_Sans']">
+              Planning to pursue advanced degree in cybersecurity at a Dutch university.
             </div>
-          </motion.div>
+          </div>
           {/* Education 3 */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-          >
-            <div className="text-neutral-800 text-lg lg:text-xl font-semibold font-['Work_Sans'] mb-2">
-              🌐 Web Application Security & Penetration Testing
+          <div>
+            <div className="text-neutral-800 text-base lg:text-lg font-semibold font-['Work_Sans'] mb-1">
+              Self-Directed Cybersecurity Learning
             </div>
-            <div className="text-gray-600 text-base font-['Work_Sans']">
-              Advanced studies in web application vulnerabilities, secure coding practices, and penetration testing methodologies.
+            <div className="text-gray-600 text-sm font-['Work_Sans']">
+              Actively practicing through cybersecurity labs and ethical penetration testing platforms.
             </div>
-          </motion.div>
+          </div>
         </div>
       </>
     ),
@@ -257,74 +204,45 @@ const sections = [
   {
     key: 'more',
     label: 'More about me',
-    image: skillsImage,
+    image: moreaboutmeImage,
     content: (
       <>
-        <motion.div 
+        <div 
           className="text-black text-lg lg:text-xl font-semibold font-['Work_Sans'] uppercase tracking-widest"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
         >
           More about me
-        </motion.div>
-        <motion.div 
+        </div>
+        <div 
           className="text-left max-w-[572px]"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <span className="text-blue-600 text-3xl lg:text-5xl font-bold font-['Work_Sans']">Beyond Cybersecurity</span>
+          <span className="text-blue-600 text-2xl lg:text-4xl font-bold font-['Work_Sans']">Beyond Cybersecurity</span>
           <br />
-          <span className="text-neutral-800 text-3xl lg:text-5xl font-bold font-['Work_Sans']">Personal Interests</span>
-        </motion.div>
-        <motion.div 
+          <span className="text-neutral-800 text-2xl lg:text-4xl font-bold font-['Work_Sans']">Personal Interests</span>
+        </div>
+        <div 
           className="max-w-[620px] text-left"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
         >
           <span className="text-neutral-800 text-base lg:text-lg font-normal font-['Work_Sans'] leading-normal">
-            When I'm not diving deep into cybersecurity, I'm someone who loves exploring life in all its fascinating forms. I believe that having diverse interests makes me a better problem-solver and more creative thinker.
+            I'm a 20-year-old passionate about gaining valuable experience while living abroad. I have a deep love for traveling and discovering new cultures, which naturally led to my interest in learning new languages. I speak four languages - Lithuanian (my mother tongue), Russian, English, and Spanish. I enjoy the challenge of reading books in different languages as it helps me improve my language skills while exploring diverse perspectives and stories.
           </span>
-        </motion.div>
-        <div className="w-full max-w-[620px] space-y-4 mt-6">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-          >
-            <div className="text-neutral-800 text-lg lg:text-xl font-semibold font-['Work_Sans'] mb-2">
-              🎵 Music & Arts
+        </div>
+        <div className="w-full max-w-[620px] space-y-3 mt-4">
+          <div>
+            <div className="text-neutral-800 text-base lg:text-lg font-semibold font-['Work_Sans'] mb-1">
+              Professional Football Background
             </div>
-            <div className="text-gray-600 text-base font-['Work_Sans']">
-              I enjoy discovering new music genres and attending live performances. Art galleries and creative spaces inspire me.
+            <div className="text-gray-600 text-sm font-['Work_Sans']">
+              Former professional football player with experience in discipline, teamwork, and perseverance.
             </div>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-          >
-            <div className="text-neutral-800 text-lg lg:text-xl font-semibold font-['Work_Sans'] mb-2">
-              🌍 Travel & Culture
+          </div>
+          <div>
+            <div className="text-neutral-800 text-base lg:text-lg font-semibold font-['Work_Sans'] mb-1">
+              International Experience & Growth
             </div>
-            <div className="text-gray-600 text-base font-['Work_Sans']">
-              Exploring different cultures and places helps me see the world from new perspectives.
+            <div className="text-gray-600 text-sm font-['Work_Sans']">
+              At 20, I'm focused on gaining meaningful experience while living abroad and embracing new challenges.
             </div>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-          >
-            <div className="text-neutral-800 text-lg lg:text-xl font-semibold font-['Work_Sans'] mb-2">
-              📚 Continuous Learning
-            </div>
-            <div className="text-gray-600 text-base font-['Work_Sans']">
-              Always curious about new subjects, from philosophy to cooking to understanding how things work.
-            </div>
-          </motion.div>
+          </div>
         </div>
       </>
     ),
@@ -335,64 +253,47 @@ function AboutMeSection() {
   const [activeSection, setActiveSection] = useState('skills');
   const current = sections.find(s => s.key === activeSection);
 
+  const handleSectionChange = (sectionKey) => {
+    setActiveSection(sectionKey);
+    
+    // Scroll to the top of the about section for better view
+    setTimeout(() => {
+      const aboutElement = document.getElementById('about');
+      if (aboutElement) {
+        // Get the exact position of the about section
+        const rect = aboutElement.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const targetPosition = scrollTop + rect.top - 80; // 80px offset from top to show more area
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 100);
+  };
+
   return (
-    <motion.section 
+    <section 
       id="about" 
-      className="py-20 px-4 lg:px-20 bg-gray-50"
-      initial={{ opacity: 0, y: 100 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      viewport={{ once: true, amount: 0.3 }}
+      className="py-12 px-4 lg:px-20 bg-gray-50"
     >
       {/* Container for the two-column layout */}
-      <div className="flex flex-col lg:flex-row items-center lg:items-start gap-12 lg:gap-16 max-w-7xl mx-auto">
+      <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12 max-w-7xl mx-auto">
         
-        {/* Left side - Image */}
-        <motion.div 
-          className="relative flex-shrink-0"
-          initial={{ opacity: 0, x: -100 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          <motion.img 
-            className="w-[300px] h-[300px] lg:w-[400px] lg:h-[400px] rounded-full absolute -z-10"
-            src="https://placehold.co/400x400" 
-            alt="Background circle"
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            viewport={{ once: true }}
-          />
-          <motion.img 
-            key={current.key}
-            className="w-[250px] h-[250px] lg:w-[350px] lg:h-[350px] rounded-[150px] lg:rounded-[175px] object-cover relative z-10"
-            src={current.image}
-            alt={current.label}
-            initial={{ opacity: 0, y: 30, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            whileHover={{ scale: 1.02, transition: { duration: 0.3, ease: "easeOut" } }}
-          />
-        </motion.div>
-
-        {/* Right side - Content */}
-        <motion.div 
-          className="flex-1 flex flex-col justify-start items-start gap-6 lg:gap-8 text-center lg:text-left lg:pl-12"
-          initial={{ opacity: 0, x: 100 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          viewport={{ once: true }}
+        {/* Left side - Content */}
+        <div 
+          className="flex-1 flex flex-col justify-start items-start gap-4 lg:gap-6 text-center lg:text-left lg:pr-8"
         >
           {/* Section Content */}
           {current.content}
           
           {/* Buttons at the bottom */}
-          <div className="flex flex-wrap gap-3 lg:gap-4 mt-8 justify-start">
+          <div className="flex flex-wrap gap-2 lg:gap-3 mt-6 justify-start" data-buttons-container>
             {sections.map(section => (
               <motion.button
                 key={section.key}
-                className={`px-6 py-3 rounded-[50px] text-lg font-semibold font-['Work_Sans'] whitespace-nowrap ${
+                className={`px-4 py-2 rounded-[50px] text-base font-semibold font-['Work_Sans'] whitespace-nowrap ${
                   activeSection === section.key
                     ? 'bg-blue-600 text-white'
                     : 'bg-white outline outline-1 outline-blue-600 text-blue-600'
@@ -404,7 +305,7 @@ function AboutMeSection() {
                 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                onClick={() => setActiveSection(section.key)}
+                onClick={() => handleSectionChange(section.key)}
                 style={{
                   backgroundColor: activeSection === section.key ? "#2563eb" : "white",
                   color: activeSection === section.key ? "white" : "#2563eb"
@@ -414,9 +315,26 @@ function AboutMeSection() {
               </motion.button>
             ))}
           </div>
-        </motion.div>
+        </div>
+
+        {/* Right side - Image */}
+        <div 
+          className="relative flex-shrink-0"
+        >
+          <img 
+            className="w-[360px] h-[360px] lg:w-[420px] lg:h-[420px] rounded-full absolute -z-10"
+            src="https://placehold.co/400x400" 
+            alt="Background circle"
+          />
+          <img 
+            key={current.key}
+            className="w-[320px] h-[320px] lg:w-[380px] lg:h-[380px] rounded-[160px] lg:rounded-[190px] object-cover relative z-10"
+            src={current.image}
+            alt={current.label}
+          />
+        </div>
       </div>
-    </motion.section>
+    </section>
   );
 }
 

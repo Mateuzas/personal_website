@@ -7,7 +7,7 @@ import PortfolioSection from './components/PortfolioSection';
 import TestimonialsSection from './components/TestimonialsSection';
 import SoftwareSection from './components/SoftwareSection';
 import ContactMeSection from './components/ContactMeSection';
-import FooterSection from './components/footerSection';
+import FooterSection from './components/FooterSection';
 
 function App() {
   return (

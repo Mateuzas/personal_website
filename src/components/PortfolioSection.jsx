@@ -3,155 +3,50 @@ import { useState } from 'react';
 
 function PortfolioSection() {
   const [selectedProject, setSelectedProject] = useState(null);
-  const [activeSection, setActiveSection] = useState('websites');
+  const [activeSection, setActiveSection] = useState('testing');
+
+  const testingItems = [
+    {
+      id: 1,
+      companyName: "Coming Soon",
+      websiteName: "Security Testing Projects",
+      logoUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&h=387&q=80",
+      websiteImage: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=406&h=367&q=80",
+      description: "Real security testing projects will be displayed here as I complete more penetration tests and security assessments for clients.",
+      testingScope: ["Web application security", "Network penetration testing", "Vulnerability assessments", "Security audits", "Compliance testing"],
+      findings: "Projects coming soon",
+      testDate: "TBD",
+      websiteUrl: "#"
+    }
+  ];
 
   const websiteItems = [
     {
       id: 1,
-      companyName: "TechCorp Solutions",
-      websiteName: "Corporate Website",
-      logoUrl: "https://placehold.co/80x80/2563eb/white?text=TC",
-      websiteImage: "https://placehold.co/406x367/f8fafc/64748b?text=Website+Preview",
-      description: "A comprehensive penetration test of TechCorp's main corporate website revealed several security vulnerabilities that were successfully addressed.",
-      testingScope: ["Authentication systems", "Input validation", "SQL injection tests", "Cross-site scripting (XSS)", "Session management"],
-      findings: "5 critical vulnerabilities identified and remediated",
-      testDate: "March 2024",
-      websiteUrl: "https://techcorp-solutions.com"
-    },
-    {
-      id: 2,
-      companyName: "Digital Agency",
-      websiteName: "Portfolio Site",
-      logoUrl: "https://placehold.co/80x80/10b981/white?text=DA",
-      websiteImage: "https://placehold.co/406x367/f8fafc/64748b?text=Website+Preview",
-      description: "Security assessment of the digital agency's portfolio website focusing on client data protection and secure file uploads.",
-      testingScope: ["File upload security", "Client data protection", "Access controls", "HTTPS implementation", "Content Security Policy"],
-      findings: "3 medium-risk issues resolved",
-      testDate: "February 2024",
-      websiteUrl: "https://digital-agency.com"
-    },
-    {
-      id: 3,
-      companyName: "StartupHub",
-      websiteName: "Landing Page",
-      logoUrl: "https://placehold.co/80x80/f59e0b/white?text=SH",
-      websiteImage: "https://placehold.co/406x367/f8fafc/64748b?text=Website+Preview",
-      description: "Comprehensive security testing of StartupHub's main landing page and user registration system.",
-      testingScope: ["User registration security", "Email validation", "Rate limiting", "CSRF protection", "Input sanitization"],
-      findings: "2 low-risk vulnerabilities patched",
-      testDate: "January 2024",
-      websiteUrl: "https://startuphub.io"
-    },
-    {
-      id: 4,
-      companyName: "E-Commerce Plus",
-      websiteName: "Online Store",
-      logoUrl: "https://placehold.co/80x80/ef4444/white?text=EC",
-      websiteImage: "https://placehold.co/406x367/f8fafc/64748b?text=Website+Preview",
-      description: "Extensive security testing of the e-commerce platform including payment processing and customer data protection.",
-      testingScope: ["Payment gateway security", "Customer data encryption", "Shopping cart security", "Admin panel testing", "PCI DSS compliance"],
-      findings: "8 critical issues identified and fixed",
-      testDate: "April 2024",
-      websiteUrl: "https://ecommerce-plus.com"
-    },
-    {
-      id: 5,
-      companyName: "Creative Studio",
-      websiteName: "Brand Website",
-      logoUrl: "https://placehold.co/80x80/8b5cf6/white?text=CS",
-      websiteImage: "https://placehold.co/406x367/f8fafc/64748b?text=Website+Preview",
-      description: "Security assessment of the creative studio's brand website with focus on portfolio protection and client communication security.",
-      testingScope: ["Portfolio security", "Contact form protection", "Image upload security", "Client area access", "SSL/TLS configuration"],
-      findings: "4 medium-risk vulnerabilities addressed",
-      testDate: "May 2024",
-      websiteUrl: "https://creative-studio.com"
-    },
-    {
-      id: 6,
-      companyName: "InnovateLab",
-      websiteName: "Tech Platform",
-      logoUrl: "https://placehold.co/80x80/06b6d4/white?text=IL",
-      websiteImage: "https://placehold.co/406x367/f8fafc/64748b?text=Website+Preview",
-      description: "Advanced penetration testing of InnovateLab's technology platform including API security and user management systems.",
-      testingScope: ["API security testing", "User authentication", "Database security", "Third-party integrations", "Infrastructure security"],
-      findings: "6 high-priority issues resolved",
-      testDate: "June 2024",
-      websiteUrl: "https://innovatelab.tech"
+      companyName: "Coming Soon",
+      websiteName: "Website Development",
+      logoUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&h=387&q=80",
+      websiteImage: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=406&h=367&q=80",
+      description: "Real website development projects will be displayed here as I complete more web development work for clients.",
+      testingScope: ["Frontend development", "Backend development", "Full-stack solutions", "Responsive design", "Performance optimization"],
+      findings: "Projects coming soon",
+      testDate: "TBD",
+      websiteUrl: "#"
     }
   ];
 
   const projectItems = [
     {
       id: 1,
-      companyName: "CyberSec Research Lab",
-      websiteName: "Network Vulnerability Scanner",
-      logoUrl: "https://placehold.co/80x80/dc2626/white?text=CR",
-      websiteImage: "https://placehold.co/406x367/f8fafc/64748b?text=Scanner+Tool",
-      description: "Developed a custom network vulnerability scanner tool as part of a research project to identify common security weaknesses in enterprise networks.",
-      testingScope: ["Network scanning", "Vulnerability detection", "Report generation", "False positive reduction", "Integration with SIEM"],
-      findings: "Successfully identified 95% of known vulnerabilities",
-      testDate: "August 2024",
-      websiteUrl: "https://github.com/cybersec-lab/vuln-scanner"
-    },
-    {
-      id: 2,
-      companyName: "SecureCode Initiative",
-      websiteName: "Code Review Automation",
-      logoUrl: "https://placehold.co/80x80/059669/white?text=SC",
-      websiteImage: "https://placehold.co/406x367/f8fafc/64748b?text=Code+Analysis",
-      description: "Participated in developing an automated code review system that identifies security vulnerabilities in source code during the development phase.",
-      testingScope: ["Static code analysis", "Security pattern recognition", "OWASP Top 10 detection", "CI/CD integration", "Developer training"],
-      findings: "Reduced security issues by 70% in pilot projects",
-      testDate: "July 2024",
-      websiteUrl: "https://github.com/securecode/auto-review"
-    },
-    {
-      id: 3,
-      companyName: "Threat Intelligence Hub",
-      websiteName: "Malware Analysis Platform",
-      logoUrl: "https://placehold.co/80x80/7c3aed/white?text=TI",
-      websiteImage: "https://placehold.co/406x367/f8fafc/64748b?text=Malware+Lab",
-      description: "Collaborated on building a malware analysis platform for automated threat detection and behavioral analysis of suspicious files.",
-      testingScope: ["Dynamic analysis", "Behavioral monitoring", "Threat classification", "IOC extraction", "Sandbox environment"],
-      findings: "Analyzed over 1000 malware samples successfully",
-      testDate: "September 2024",
-      websiteUrl: "https://github.com/threat-intel/malware-analyzer"
-    },
-    {
-      id: 4,
-      companyName: "Academic Research",
-      websiteName: "IoT Security Framework",
-      logoUrl: "https://placehold.co/80x80/ea580c/white?text=AR",
-      websiteImage: "https://placehold.co/406x367/f8fafc/64748b?text=IoT+Security",
-      description: "Research project focused on developing a comprehensive security framework for Internet of Things (IoT) devices in smart home environments.",
-      testingScope: ["Device authentication", "Encrypted communications", "Firmware analysis", "Network segmentation", "Privacy protection"],
-      findings: "Framework tested on 50+ IoT devices",
-      testDate: "June 2024",
-      websiteUrl: "https://github.com/academic-research/iot-security"
-    },
-    {
-      id: 5,
-      companyName: "Open Source Community",
-      websiteName: "Security Testing Suite",
-      logoUrl: "https://placehold.co/80x80/0891b2/white?text=OS",
-      websiteImage: "https://placehold.co/406x367/f8fafc/64748b?text=Testing+Suite",
-      description: "Contributed to an open-source security testing suite designed for small to medium-sized businesses to perform basic security assessments.",
-      testingScope: ["Web application testing", "Network reconnaissance", "SSL/TLS analysis", "Configuration review", "Compliance checking"],
-      findings: "Used by 500+ organizations globally",
-      testDate: "October 2024",
-      websiteUrl: "https://github.com/opensource/security-suite"
-    },
-    {
-      id: 6,
-      companyName: "Cybersecurity Bootcamp",
-      websiteName: "Penetration Testing Lab",
-      logoUrl: "https://placehold.co/80x80/be185d/white?text=CB",
-      websiteImage: "https://placehold.co/406x367/f8fafc/64748b?text=Training+Lab",
-      description: "Created and managed a hands-on penetration testing laboratory environment for cybersecurity training and skill development.",
-      testingScope: ["Virtual lab setup", "Scenario development", "Student mentoring", "Assessment creation", "Tool demonstration"],
-      findings: "Trained 200+ aspiring security professionals",
-      testDate: "November 2024",
-      websiteUrl: "https://github.com/cyber-bootcamp/pentest-lab"
+      companyName: "Coming Soon",
+      websiteName: "Individual Projects",
+      logoUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&h=387&q=80",
+      websiteImage: "https://images.unsplash.com/photo-1504639725590-34d0984388bd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=406&h=367&q=80",
+      description: "Real individual development and research projects will be displayed here as I work on more personal cybersecurity tools and applications.",
+      testingScope: ["Security tool development", "Research projects", "Open source contributions", "Academic collaborations", "Innovation projects"],
+      findings: "Projects coming soon",
+      testDate: "TBD", 
+      websiteUrl: "#"
     }
   ];
 
@@ -176,14 +71,14 @@ function PortfolioSection() {
     }
   };
 
-  const currentItems = activeSection === 'websites' ? websiteItems : projectItems;
-  const currentTitle = activeSection === 'websites' ? 'Websites Tested By Me' : 'Projects I\'ve Participated In';
-  const currentSubtitle = activeSection === 'websites' ? 'Summaries about the Websites' : 'Development & Research Projects';
+  const currentItems = activeSection === 'testing' ? testingItems : activeSection === 'websites' ? websiteItems : projectItems;
+  const currentTitle = activeSection === 'testing' ? 'Websites Tested By Me' : activeSection === 'websites' ? 'Websites I\'ve Developed' : 'Individual Projects';
+  const currentSubtitle = activeSection === 'testing' ? 'Security Testing Projects' : activeSection === 'websites' ? 'Website Development' : 'Development & Research Projects';
 
   return (
     <motion.section 
       id="portfolio" 
-      className="px-20 py-24 bg-white inline-flex flex-col justify-start items-center gap-12"
+      className="px-4 lg:px-20 py-24 bg-white flex flex-col justify-start items-center gap-12"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
@@ -191,7 +86,7 @@ function PortfolioSection() {
     >
       <motion.div 
         key={currentTitle}
-        className="w-[684px] text-center justify-start text-neutral-800 text-5xl font-bold font-['Work_Sans'] leading-[50px]"
+        className="w-full max-w-[1400px] text-center justify-start text-neutral-800 text-5xl font-bold font-['Work_Sans'] leading-[50px]"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6, delay: 0.2 }}
@@ -201,7 +96,7 @@ function PortfolioSection() {
       
       <motion.div 
         key={currentSubtitle}
-        className="justify-start text-blue-600 text-xl font-semibold font-['Work_Sans'] uppercase tracking-widest"
+        className="text-center justify-start text-blue-600 text-xl font-semibold font-['Work_Sans'] uppercase tracking-widest"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}
@@ -210,9 +105,24 @@ function PortfolioSection() {
       </motion.div>
 
       {/* Buttons */}
-      <div className="flex gap-4 mb-8">
+      <div className="flex gap-4 mb-8 flex-wrap justify-center">
         <motion.button
-          className={`px-8 py-4 rounded-[50px] text-xl font-semibold font-['Work_Sans'] whitespace-nowrap ${
+          className={`px-6 py-3 rounded-[50px] text-lg font-semibold font-['Work_Sans'] whitespace-nowrap ${
+            activeSection === 'testing'
+              ? 'bg-blue-600 text-white'
+              : 'bg-white outline outline-1 outline-blue-600 text-blue-600'
+          }`}
+          whileHover={{ 
+            scale: 1.05
+          }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          onClick={() => setActiveSection('testing')}
+        >
+          Testing
+        </motion.button>
+        <motion.button
+          className={`px-6 py-3 rounded-[50px] text-lg font-semibold font-['Work_Sans'] whitespace-nowrap ${
             activeSection === 'websites'
               ? 'bg-blue-600 text-white'
               : 'bg-white outline outline-1 outline-blue-600 text-blue-600'
@@ -227,7 +137,7 @@ function PortfolioSection() {
           Websites
         </motion.button>
         <motion.button
-          className={`px-8 py-4 rounded-[50px] text-xl font-semibold font-['Work_Sans'] whitespace-nowrap ${
+          className={`px-6 py-3 rounded-[50px] text-lg font-semibold font-['Work_Sans'] whitespace-nowrap ${
             activeSection === 'projects'
               ? 'bg-blue-600 text-white'
               : 'bg-white outline outline-1 outline-blue-600 text-blue-600'
@@ -245,49 +155,62 @@ function PortfolioSection() {
       
       <motion.div 
         key={activeSection}
-        className="max-w-[1400px] w-full flex justify-center items-start gap-7 flex-wrap px-4"
+        className="max-w-[1400px] w-full flex justify-center items-center gap-12 px-4"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
+        {/* Single Portfolio Card */}
         {currentItems.map((item) => (
           <motion.div 
             key={item.id}
-            className="bg-white rounded-2xl outline outline-1 outline-offset-[-1px] outline-neutral-200 inline-flex flex-col justify-start items-start overflow-hidden group cursor-pointer"
+            className="bg-white hover:bg-blue-600 rounded-2xl outline outline-1 outline-offset-[-1px] outline-neutral-200 hover:outline-blue-600 inline-flex flex-col justify-start items-start overflow-hidden group cursor-pointer transition-all duration-200 flex-shrink-0"
             variants={itemVariants}
-            whileHover={{ y: -10, boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}
-            transition={{ duration: 0.3 }}
+            whileHover={{ y: -10, boxShadow: "0 20px 40px rgba(37, 99, 235, 0.2)" }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
             onClick={() => setSelectedProject(item)}
           >
             <div className="w-96 h-96 relative overflow-hidden">
               <motion.img 
-                className="w-full h-full object-cover rounded-t-2xl"
+                className="w-full h-full object-cover rounded-t-2xl transition-all duration-200 group-hover:scale-105"
                 src={item.websiteImage}
                 alt={`${item.companyName} ${activeSection === 'websites' ? 'website' : 'project'}`}
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
               />
             </div>
             
             <div className="w-full p-6 flex items-center gap-4">
               <motion.img 
-                className="w-16 h-16 rounded-full bg-gray-100 flex-shrink-0"
+                className="w-16 h-16 rounded-full bg-gray-100 flex-shrink-0 transition-all duration-300"
                 src={item.logoUrl}
                 alt={`${item.companyName} logo`}
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                transition={{ duration: 0.2 }}
               />
               <div className="flex-1">
-                <h3 className="text-lg font-bold font-['Work_Sans'] text-neutral-800 mb-1">
+                <h3 className="text-lg font-bold font-['Work_Sans'] text-neutral-800 group-hover:text-white mb-1 transition-colors duration-300">
                   {item.companyName}
                 </h3>
-                <p className="text-sm font-medium font-['Work_Sans'] text-gray-600">
+                <p className="text-sm font-medium font-['Work_Sans'] text-gray-600 group-hover:text-white/90 transition-colors duration-300">
                   {item.websiteName}
                 </p>
               </div>
             </div>
           </motion.div>
         ))}
+        
+        {/* Coming Soon Text on the Right */}
+        <motion.div 
+          className="w-96 flex flex-col justify-center items-start text-left px-8"
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-5xl lg:text-6xl font-bold text-gray-300 font-['Work_Sans'] mb-8 leading-tight">
+            Coming Soon
+          </h2>
+          <p className="text-xl text-gray-400 font-['Work_Sans'] leading-relaxed">
+            More real {activeSection === 'testing' ? 'security testing projects' : activeSection === 'websites' ? 'website development projects' : 'individual development projects'} will be added here as I complete work for clients and expand my portfolio.
+          </p>
+        </motion.div>
       </motion.div>
 
       {/* Project Details Modal */}
