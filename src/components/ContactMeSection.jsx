@@ -1,30 +1,30 @@
-import { motion } from 'framer-motion';
-import { useState } from 'react';
-import { sendWeb3Form } from '../utils/emailService';
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { sendWeb3Form } from "../utils/emailService";
 
 function ContactMeSection() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState({ type: '', message: '' });
+  const [submitStatus, setSubmitStatus] = useState({ type: "", message: "" });
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: type === "checkbox" ? checked : value,
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus({ type: '', message: '' });
+    setSubmitStatus({ type: "", message: "" });
 
     try {
       // Send email using Web3Forms
@@ -32,24 +32,26 @@ function ContactMeSection() {
 
       if (result.success) {
         setSubmitStatus({
-          type: 'success',
-          message: 'Thank you! Your message has been sent successfully. I\'ll get back to you soon.'
+          type: "success",
+          message:
+            "Thank you! Your message has been sent successfully. I'll get back to you soon.",
         });
         // Reset form
         setFormData({
-          name: '',
-          email: '',
-          subject: '',
-          message: ''
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
         });
       } else {
-        throw new Error('Failed to send message');
+        throw new Error("Failed to send message");
       }
     } catch (error) {
-      console.error('Error sending email:', error);
+      console.error("Error sending email:", error);
       setSubmitStatus({
-        type: 'error',
-        message: 'Sorry, there was an error sending your message. Please try again or contact me directly at matas.tijusas@outlook.com'
+        type: "error",
+        message:
+          "Sorry, there was an error sending your message. Please try again or contact me directly at matas.tijusas@outlook.com",
       });
     } finally {
       setIsSubmitting(false);
@@ -57,9 +59,9 @@ function ContactMeSection() {
   };
 
   return (
-    <motion.section 
-      id="contact" 
-      className="relative bg-blue-600 py-20 px-4 lg:px-0 overflow-hidden"
+    <motion.section
+      id="contact"
+      className="relative bg-blue-600 py-32 px-4 lg:px-0 overflow-hidden"
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
@@ -68,18 +70,18 @@ function ContactMeSection() {
       {/* Background Decorative Circles */}
       <div className="absolute w-[786px] h-[786px] right-[-200px] lg:right-[-100px] top-[2px] bg-blue-600 rounded-full border-[80px] border-white/5 hidden lg:block" />
       <div className="absolute w-56 h-56 left-[-57px] bottom-[100px] bg-blue-600 rounded-full border-[40px] border-white/5 hidden lg:block" />
-      
+
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
-        <motion.div 
-          className="text-center mb-16"
+        <motion.div
+          className="text-center mb-12"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <motion.div 
-            className="text-black text-xl font-semibold font-['Work_Sans'] uppercase tracking-widest mb-4"
+          <motion.div
+            className="text-white/80 text-lg font-semibold font-['Work_Sans'] uppercase tracking-widest mb-3"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -87,8 +89,8 @@ function ContactMeSection() {
           >
             Contact Me
           </motion.div>
-          <motion.h2 
-            className="text-white text-3xl lg:text-5xl font-bold font-['Work_Sans'] leading-[50px] max-w-[684px] mx-auto"
+          <motion.h2
+            className="text-white text-2xl lg:text-4xl font-bold font-['Work_Sans'] leading-[40px] max-w-[684px] mx-auto"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -99,70 +101,80 @@ function ContactMeSection() {
         </motion.div>
 
         {/* Main Content */}
-        <div className="flex flex-col lg:flex-row justify-center items-start gap-7 lg:px-12">
-          
+        <div className="flex flex-col lg:flex-row justify-center items-start gap-6 lg:px-8">
           {/* Contact Info Card */}
-          <motion.div 
-            className="w-full max-w-[514px] h-auto p-7 bg-white rounded-2xl flex flex-col justify-start items-start gap-10"
+          <motion.div
+            className="w-full max-w-[514px] h-auto p-6 bg-white rounded-2xl flex flex-col justify-start items-start gap-6"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
             viewport={{ once: true }}
           >
             <div className="justify-start">
-              <div className="text-zinc-800 text-base font-bold font-['Work_Sans'] leading-tight mb-1">
-                Hotline 24/7
+              <div className="text-blue-600 text-base font-bold font-['Work_Sans'] leading-tight mb-2">
+                Ready to Collaborate?
               </div>
-              <div className="text-zinc-800 text-2xl font-bold font-['Work_Sans'] leading-loose">
-                matas.tijusas@outlook.com
+              <div className="text-zinc-800 text-sm font-normal font-['Work_Sans'] leading-relaxed mb-4">
+                Let's discuss your cybersecurity needs and web development
+                projects. I'm here to help secure and build your digital
+                presence.
               </div>
             </div>
+
             <div className="self-stretch justify-start">
-              <div className="mb-2">
-                <span className="text-zinc-800 text-base font-semibold font-['Work_Sans'] leading-relaxed">Address: </span>
-                <span className="text-zinc-800 text-base font-normal font-['Work_Sans'] leading-relaxed">
-                  Available for Remote Work Worldwide
-                </span>
+              <div className="space-y-2 mb-3">
+                <div className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
+                  <span className="text-zinc-800 text-sm font-normal font-['Work_Sans'] leading-relaxed">
+                    Available for remote work worldwide
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
+                  <span className="text-zinc-800 text-sm font-normal font-['Work_Sans'] leading-relaxed">
+                    Quick response within 24 hours
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
+                  <span className="text-zinc-800 text-sm font-normal font-['Work_Sans'] leading-relaxed">
+                    Professional cybersecurity & web development services
+                  </span>
+                </div>
               </div>
-              <div className="mb-2">
-                <span className="text-zinc-800 text-base font-semibold font-['Work_Sans'] leading-relaxed">Email: </span>
-                <span className="text-zinc-800 text-base font-normal font-['Work_Sans'] leading-relaxed">
+
+              <div className="bg-blue-50 px-3 py-2 rounded-lg">
+                <div className="text-blue-600 text-xs font-semibold font-['Work_Sans'] uppercase tracking-wide mb-1">
+                  Direct Contact
+                </div>
+                <div className="text-zinc-800 text-base font-bold font-['Work_Sans'] leading-tight">
                   matas.tijusas@outlook.com
-                </span>
-              </div>
-              <div className="mb-2">
-                <span className="text-zinc-800 text-base font-semibold font-['Work_Sans'] leading-relaxed">LinkedIn: </span>
-                <span className="text-zinc-800 text-base font-normal font-['Work_Sans'] leading-relaxed">
-                  Available upon request
-                </span>
-              </div>
-              <div>
-                <span className="text-zinc-800 text-base font-semibold font-['Work_Sans'] leading-relaxed">Availability: </span>
-                <span className="text-zinc-800 text-base font-normal font-['Work_Sans'] leading-relaxed">
-                  Open to cybersecurity opportunities
-                </span>
+                </div>
+                <div className="text-zinc-600 text-xs font-normal font-['Work_Sans'] leading-tight mt-1">
+                  Or you can contact me directly through email
+                </div>
               </div>
             </div>
           </motion.div>
 
           {/* Contact Form */}
-          <motion.form 
+          <motion.form
             onSubmit={handleSubmit}
-            className="flex flex-col justify-start items-start gap-3.5 w-full max-w-[515px]"
+            className="flex flex-col justify-start items-start gap-3 w-full max-w-[515px]"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
             viewport={{ once: true }}
           >
             {/* Name and Email Row */}
-            <div className="flex flex-col sm:flex-row justify-start items-start gap-3.5 w-full">
+            <div className="flex flex-col sm:flex-row justify-start items-start gap-3 w-full">
               <motion.input
                 type="text"
                 name="name"
                 value={formData.name}
                 onChange={handleInputChange}
                 placeholder="Name*"
-                className="flex-1 w-full sm:w-64 p-3.5 bg-white rounded-[5px] text-zinc-800 text-base font-normal font-['Work_Sans'] leading-tight placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-white/50"
+                className="flex-1 w-full sm:w-64 p-3 bg-white rounded-[5px] text-zinc-800 text-sm font-normal font-['Work_Sans'] leading-tight placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-white/50"
                 required
                 whileFocus={{ scale: 1.02 }}
                 transition={{ duration: 0.2 }}
@@ -173,7 +185,7 @@ function ContactMeSection() {
                 value={formData.email}
                 onChange={handleInputChange}
                 placeholder="Email Address*"
-                className="flex-1 w-full sm:w-64 p-3.5 bg-white rounded-[5px] text-zinc-800 text-base font-normal font-['Work_Sans'] leading-tight placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-white/50"
+                className="flex-1 w-full sm:w-64 p-3 bg-white rounded-[5px] text-zinc-800 text-sm font-normal font-['Work_Sans'] leading-tight placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-white/50"
                 required
                 whileFocus={{ scale: 1.02 }}
                 transition={{ duration: 0.2 }}
@@ -187,7 +199,7 @@ function ContactMeSection() {
               value={formData.subject}
               onChange={handleInputChange}
               placeholder="Subject (Optional)"
-              className="w-full p-3.5 bg-white rounded-[5px] text-zinc-800 text-base font-normal font-['Work_Sans'] leading-tight placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-white/50"
+              className="w-full p-3 bg-white rounded-[5px] text-zinc-800 text-sm font-normal font-['Work_Sans'] leading-tight placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-white/50"
               whileFocus={{ scale: 1.01 }}
               transition={{ duration: 0.2 }}
             />
@@ -197,9 +209,9 @@ function ContactMeSection() {
               name="message"
               value={formData.message}
               onChange={handleInputChange}
-              placeholder="How can I help you?"
-              rows={5}
-              className="w-full p-3.5 bg-white rounded-[5px] text-zinc-800 text-base font-normal font-['Work_Sans'] leading-tight placeholder-stone-500 resize-none focus:outline-none focus:ring-2 focus:ring-white/50"
+              placeholder="Tell me about your project or security needs..."
+              rows={4}
+              className="w-full p-3 bg-white rounded-[5px] text-zinc-800 text-sm font-normal font-['Work_Sans'] leading-tight placeholder-stone-500 resize-none focus:outline-none focus:ring-2 focus:ring-white/50"
               required
               whileFocus={{ scale: 1.01 }}
               transition={{ duration: 0.2 }}
@@ -209,9 +221,9 @@ function ContactMeSection() {
             {submitStatus.message && (
               <motion.div
                 className={`w-full p-4 rounded-lg text-sm font-medium ${
-                  submitStatus.type === 'success' 
-                    ? 'bg-green-100 text-green-800 border border-green-200' 
-                    : 'bg-red-100 text-red-800 border border-red-200'
+                  submitStatus.type === "success"
+                    ? "bg-green-100 text-green-800 border border-green-200"
+                    : "bg-red-100 text-red-800 border border-red-200"
                 }`}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -225,16 +237,16 @@ function ContactMeSection() {
             <motion.button
               type="submit"
               disabled={isSubmitting}
-              className={`px-8 py-4 rounded-[50px] text-xl font-bold font-['Work_Sans'] leading-tight focus:outline-none focus:ring-2 focus:ring-white/50 transition-colors duration-200 border ${
-                isSubmitting 
-                  ? 'bg-gray-300 text-gray-500 border-gray-300 cursor-not-allowed' 
-                  : 'bg-white text-blue-600 border-blue-600 hover:bg-blue-500 hover:text-white'
+              className={`px-6 py-3 rounded-[50px] text-base font-bold font-['Work_Sans'] leading-tight focus:outline-none focus:ring-2 focus:ring-white/50 transition-colors duration-200 border ${
+                isSubmitting
+                  ? "bg-gray-300 text-gray-500 border-gray-300 cursor-not-allowed"
+                  : "bg-white text-blue-600 border-blue-600 hover:bg-blue-500 hover:text-white"
               }`}
               whileHover={!isSubmitting ? { scale: 1.05 } : {}}
               whileTap={!isSubmitting ? { scale: 0.95 } : {}}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              {isSubmitting ? 'Sending...' : 'Request Now'}
+              {isSubmitting ? "Sending Message..." : "Send Message"}
             </motion.button>
           </motion.form>
         </div>
