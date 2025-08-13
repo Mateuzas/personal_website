@@ -12,6 +12,8 @@ function ContactMeSection() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState({ type: "", message: "" });
+  const [validationErrors, setValidationErrors] = useState({});
+  const [hasSubmitted, setHasSubmitted] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -21,8 +23,37 @@ function ContactMeSection() {
     }));
   };
 
+  const validateForm = () => {
+    const errors = {};
+
+    if (!formData.name.trim()) {
+      errors.name = "Name is required";
+    }
+
+    if (!formData.email.trim()) {
+      errors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      errors.email = "Please enter a valid email address";
+    }
+
+    if (!formData.message.trim()) {
+      errors.message = "Message is required";
+    }
+
+    return errors;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setHasSubmitted(true);
+
+    const errors = validateForm();
+    setValidationErrors(errors);
+
+    if (Object.keys(errors).length > 0) {
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitStatus({ type: "", message: "" });
 
@@ -43,6 +74,8 @@ function ContactMeSection() {
           subject: "",
           message: "",
         });
+        setValidationErrors({});
+        setHasSubmitted(false);
       } else {
         throw new Error("Failed to send message");
       }
@@ -61,20 +94,20 @@ function ContactMeSection() {
   return (
     <motion.section
       id="contact"
-      className="relative bg-blue-600 py-32 px-4 lg:px-0 overflow-hidden"
+      className="relative bg-blue-600 py-16 sm:py-20 md:py-24 lg:py-32 px-4 lg:px-0 overflow-hidden"
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.3 }}
     >
       {/* Background Decorative Circles */}
-      <div className="absolute w-[786px] h-[786px] right-[-200px] lg:right-[-100px] top-[2px] bg-blue-600 rounded-full border-[80px] border-white/5 hidden lg:block" />
-      <div className="absolute w-56 h-56 left-[-57px] bottom-[100px] bg-blue-600 rounded-full border-[40px] border-white/5 hidden lg:block" />
+      <div className="absolute w-[786px] h-[786px] right-[-200px] lg:right-[-100px] top-[2px] bg-blue-600 rounded-full border-[80px] border-white/5 hidden lg:block pointer-events-none" />
+      <div className="absolute w-56 h-56 left-[-57px] bottom-[100px] bg-blue-600 rounded-full border-[40px] border-white/5 hidden lg:block pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-10 md:mb-12"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -168,28 +201,60 @@ function ContactMeSection() {
           >
             {/* Name and Email Row */}
             <div className="flex flex-col sm:flex-row justify-start items-start gap-3 w-full">
-              <motion.input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                placeholder="Name*"
-                className="flex-1 w-full sm:w-64 p-3 bg-white rounded-[5px] text-zinc-800 text-sm font-normal font-['Work_Sans'] leading-tight placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-white/50"
-                required
-                whileFocus={{ scale: 1.02 }}
-                transition={{ duration: 0.2 }}
-              />
-              <motion.input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                placeholder="Email Address*"
-                className="flex-1 w-full sm:w-64 p-3 bg-white rounded-[5px] text-zinc-800 text-sm font-normal font-['Work_Sans'] leading-tight placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-white/50"
-                required
-                whileFocus={{ scale: 1.02 }}
-                transition={{ duration: 0.2 }}
-              />
+              <div className="flex-1 w-full sm:w-64">
+                <motion.input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  placeholder="Name*"
+                  className={`w-full p-3 rounded-[5px] text-sm font-normal font-['Work_Sans'] leading-tight placeholder-stone-500 focus:outline-none focus:ring-2 transition-colors duration-200 ${
+                    hasSubmitted && validationErrors.name
+                      ? "bg-red-50 text-red-800 border-2 border-red-300 focus:ring-red-300"
+                      : "bg-white text-zinc-800 focus:ring-white/50"
+                  }`}
+                  required
+                  whileFocus={{ scale: 1.02 }}
+                  transition={{ duration: 0.2 }}
+                />
+                {hasSubmitted && validationErrors.name && (
+                  <motion.div
+                    className="text-red-600 text-xs mt-1 ml-1"
+                    initial={{ opacity: 0, y: -5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {validationErrors.name}
+                  </motion.div>
+                )}
+              </div>
+              <div className="flex-1 w-full sm:w-64">
+                <motion.input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder="Email Address*"
+                  className={`w-full p-3 rounded-[5px] text-sm font-normal font-['Work_Sans'] leading-tight placeholder-stone-500 focus:outline-none focus:ring-2 transition-colors duration-200 ${
+                    hasSubmitted && validationErrors.email
+                      ? "bg-red-50 text-red-800 border-2 border-red-300 focus:ring-red-300"
+                      : "bg-white text-zinc-800 focus:ring-white/50"
+                  }`}
+                  required
+                  whileFocus={{ scale: 1.02 }}
+                  transition={{ duration: 0.2 }}
+                />
+                {hasSubmitted && validationErrors.email && (
+                  <motion.div
+                    className="text-red-600 text-xs mt-1 ml-1"
+                    initial={{ opacity: 0, y: -5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {validationErrors.email}
+                  </motion.div>
+                )}
+              </div>
             </div>
 
             {/* Subject */}
@@ -205,17 +270,33 @@ function ContactMeSection() {
             />
 
             {/* Message */}
-            <motion.textarea
-              name="message"
-              value={formData.message}
-              onChange={handleInputChange}
-              placeholder="Tell me about your project or security needs..."
-              rows={4}
-              className="w-full p-3 bg-white rounded-[5px] text-zinc-800 text-sm font-normal font-['Work_Sans'] leading-tight placeholder-stone-500 resize-none focus:outline-none focus:ring-2 focus:ring-white/50"
-              required
-              whileFocus={{ scale: 1.01 }}
-              transition={{ duration: 0.2 }}
-            />
+            <div className="w-full">
+              <motion.textarea
+                name="message"
+                value={formData.message}
+                onChange={handleInputChange}
+                placeholder="Tell me about your project or security needs..."
+                rows={4}
+                className={`w-full p-3 rounded-[5px] text-sm font-normal font-['Work_Sans'] leading-tight placeholder-stone-500 resize-none focus:outline-none focus:ring-2 transition-colors duration-200 ${
+                  hasSubmitted && validationErrors.message
+                    ? "bg-red-50 text-red-800 border-2 border-red-300 focus:ring-red-300"
+                    : "bg-white text-zinc-800 focus:ring-white/50"
+                }`}
+                required
+                whileFocus={{ scale: 1.01 }}
+                transition={{ duration: 0.2 }}
+              />
+              {hasSubmitted && validationErrors.message && (
+                <motion.div
+                  className="text-red-600 text-xs mt-1 ml-1"
+                  initial={{ opacity: 0, y: -5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {validationErrors.message}
+                </motion.div>
+              )}
+            </div>
 
             {/* Status Message */}
             {submitStatus.message && (
@@ -237,7 +318,7 @@ function ContactMeSection() {
             <motion.button
               type="submit"
               disabled={isSubmitting}
-              className={`px-6 py-3 rounded-[50px] text-base font-bold font-['Work_Sans'] leading-tight focus:outline-none focus:ring-2 focus:ring-white/50 transition-colors duration-200 border ${
+              className={`w-full lg:w-auto px-8 lg:px-6 py-4 lg:py-3 rounded-[50px] text-lg lg:text-base font-bold font-['Work_Sans'] leading-tight focus:outline-none focus:ring-2 focus:ring-white/50 transition-colors duration-200 border ${
                 isSubmitting
                   ? "bg-gray-300 text-gray-500 border-gray-300 cursor-not-allowed"
                   : "bg-white text-blue-600 border-blue-600 hover:bg-blue-500 hover:text-white"

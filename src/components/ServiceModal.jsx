@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from "framer-motion";
 
 function ServiceModal({ isOpen, onClose, service }) {
   if (!service) return null;
@@ -7,11 +7,11 @@ function ServiceModal({ isOpen, onClose, service }) {
     onClose(); // Close the modal first
     // Small delay to ensure modal closes before scrolling
     setTimeout(() => {
-      const contactSection = document.getElementById('contact');
+      const contactSection = document.getElementById("contact");
       if (contactSection) {
-        contactSection.scrollIntoView({ 
-          behavior: 'smooth',
-          block: 'start'
+        contactSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
         });
       }
     }, 300);
@@ -19,7 +19,7 @@ function ServiceModal({ isOpen, onClose, service }) {
 
   const openFiverrGig = () => {
     if (service.fiverr) {
-      window.open(service.fiverr, '_blank');
+      window.open(service.fiverr, "_blank");
     }
   };
 
@@ -29,20 +29,32 @@ function ServiceModal({ isOpen, onClose, service }) {
         return {
           included: [
             "SQL injection and XSS vulnerability testing",
-            "Password cracking and authentication bypass attempts", 
+            "Password cracking and authentication bypass attempts",
             "Cookie tampering and session management analysis",
             "Directory traversal and file inclusion testing",
-            "Comprehensive vulnerability assessment report"
+            "Comprehensive vulnerability assessment report",
           ],
           tools: "Kali Linux, Burp Suite, OWASP ZAP, SQLmap, Hydra, Nikto",
           process: [
-            { title: "Reconnaissance", desc: "Information gathering and target analysis using OSINT techniques." },
-            { title: "Vulnerability Scanning", desc: "Automated and manual scanning for security weaknesses." },
-            { title: "Exploitation", desc: "Ethical exploitation of discovered vulnerabilities to assess impact." },
-            { title: "Reporting", desc: "Detailed report with findings, risk levels, and remediation recommendations." }
-          ]
+            {
+              title: "Reconnaissance",
+              desc: "Information gathering and target analysis using OSINT techniques.",
+            },
+            {
+              title: "Vulnerability Scanning",
+              desc: "Automated and manual scanning for security weaknesses.",
+            },
+            {
+              title: "Exploitation",
+              desc: "Ethical exploitation of discovered vulnerabilities to assess impact.",
+            },
+            {
+              title: "Reporting",
+              desc: "Detailed report with findings, risk levels, and remediation recommendations.",
+            },
+          ],
         };
-      
+
       case "General Security Consulting":
         return {
           included: [
@@ -50,17 +62,30 @@ function ServiceModal({ isOpen, onClose, service }) {
             "Threat modeling and risk analysis",
             "Security policy and procedure review",
             "Compliance guidance (OWASP, NIST frameworks)",
-            "Security awareness training recommendations"
+            "Security awareness training recommendations",
           ],
-          tools: "Industry frameworks, threat intelligence feeds, security assessment tools",
+          tools:
+            "Industry frameworks, threat intelligence feeds, security assessment tools",
           process: [
-            { title: "Assessment", desc: "Evaluating current security measures and identifying gaps." },
-            { title: "Analysis", desc: "Threat modeling and risk assessment based on your business context." },
-            { title: "Strategy", desc: "Developing tailored security recommendations and roadmap." },
-            { title: "Implementation", desc: "Guidance on implementing security improvements and best practices." }
-          ]
+            {
+              title: "Assessment",
+              desc: "Evaluating current security measures and identifying gaps.",
+            },
+            {
+              title: "Analysis",
+              desc: "Threat modeling and risk assessment based on your business context.",
+            },
+            {
+              title: "Strategy",
+              desc: "Developing tailored security recommendations and roadmap.",
+            },
+            {
+              title: "Implementation",
+              desc: "Guidance on implementing security improvements and best practices.",
+            },
+          ],
         };
-      
+
       case "Landing Page Design":
         return {
           included: [
@@ -68,17 +93,29 @@ function ServiceModal({ isOpen, onClose, service }) {
             "Favicon creation for web and mobile",
             "Complete landing page design in Figma",
             "Mobile-responsive design layouts",
-            "Style guide and design assets delivery"
+            "Style guide and design assets delivery",
           ],
           tools: "Figma, Adobe Creative Suite, UI/UX design principles",
           process: [
-            { title: "Brief & Research", desc: "Understanding your brand, target audience, and design requirements." },
-            { title: "Concept Design", desc: "Creating initial design concepts and brand identity elements." },
-            { title: "Refinement", desc: "Iterating on designs based on feedback and best practices." },
-            { title: "Final Delivery", desc: "Delivering all design assets and style guide documentation." }
-          ]
+            {
+              title: "Brief & Research",
+              desc: "Understanding your brand, target audience, and design requirements.",
+            },
+            {
+              title: "Concept Design",
+              desc: "Creating initial design concepts and brand identity elements.",
+            },
+            {
+              title: "Refinement",
+              desc: "Iterating on designs based on feedback and best practices.",
+            },
+            {
+              title: "Final Delivery",
+              desc: "Delivering all design assets and style guide documentation.",
+            },
+          ],
         };
-      
+
       case "Website Development & Hosting":
         return {
           included: [
@@ -86,32 +123,57 @@ function ServiceModal({ isOpen, onClose, service }) {
             "Tailwind CSS for modern, responsive styling",
             "Performance optimization and SEO setup",
             "Hosting on Hostinger or GitHub Pages",
-            "Custom domain configuration and SSL setup"
+            "Custom domain configuration and SSL setup",
           ],
-          tools: "React, Vite, Tailwind CSS, Hostinger, GitHub Pages, custom domains",
+          tools:
+            "React, Vite, Tailwind CSS, Hostinger, GitHub Pages, custom domains",
           process: [
-            { title: "Planning", desc: "Architecture planning and technology stack selection." },
-            { title: "Development", desc: "Building responsive, high-performance website using modern tools." },
-            { title: "Testing", desc: "Cross-browser testing, performance optimization, and quality assurance." },
-            { title: "Deployment", desc: "Hosting setup, domain configuration, and SSL certificate installation." }
-          ]
+            {
+              title: "Planning",
+              desc: "Architecture planning and technology stack selection.",
+            },
+            {
+              title: "Development",
+              desc: "Building responsive, high-performance website using modern tools.",
+            },
+            {
+              title: "Testing",
+              desc: "Cross-browser testing, performance optimization, and quality assurance.",
+            },
+            {
+              title: "Deployment",
+              desc: "Hosting setup, domain configuration, and SSL certificate installation.",
+            },
+          ],
         };
-      
+
       default:
         return {
           included: [
             "Comprehensive analysis and planning phase",
             "Custom solution development tailored to your needs",
             "Quality assurance and testing procedures",
-            "Ongoing support and maintenance options"
+            "Ongoing support and maintenance options",
           ],
           tools: "Professional industry-standard tools and frameworks",
           process: [
-            { title: "Discovery", desc: "Understanding your requirements and goals through detailed consultation." },
-            { title: "Strategy", desc: "Developing a comprehensive plan and roadmap for success." },
-            { title: "Implementation", desc: "Executing the solution with attention to detail and quality." },
-            { title: "Delivery", desc: "Launching your solution and providing ongoing support." }
-          ]
+            {
+              title: "Discovery",
+              desc: "Understanding your requirements and goals through detailed consultation.",
+            },
+            {
+              title: "Strategy",
+              desc: "Developing a comprehensive plan and roadmap for success.",
+            },
+            {
+              title: "Implementation",
+              desc: "Executing the solution with attention to detail and quality.",
+            },
+            {
+              title: "Delivery",
+              desc: "Launching your solution and providing ongoing support.",
+            },
+          ],
         };
     }
   };
@@ -119,35 +181,35 @@ function ServiceModal({ isOpen, onClose, service }) {
   const content = getServiceSpecificContent();
 
   const modalVariants = {
-    hidden: { 
+    hidden: {
       opacity: 0,
       scale: 0.8,
-      y: 50
+      y: 50,
     },
-    visible: { 
+    visible: {
       opacity: 1,
       scale: 1,
       y: 0,
       transition: {
         duration: 0.3,
-        ease: "easeOut"
-      }
+        ease: "easeOut",
+      },
     },
-    exit: { 
+    exit: {
       opacity: 0,
       scale: 0.8,
       y: 50,
       transition: {
         duration: 0.2,
-        ease: "easeIn"
-      }
-    }
+        ease: "easeIn",
+      },
+    },
   };
 
   const overlayVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1 },
-    exit: { opacity: 0 }
+    exit: { opacity: 0 },
   };
 
   return (
@@ -162,10 +224,11 @@ function ServiceModal({ isOpen, onClose, service }) {
           onClick={onClose}
         >
           <motion.div
-            className="bg-white rounded-[20px] p-8 max-w-2xl w-full max-h-[80vh] overflow-y-auto scrollbar-thin scrollbar-thumb-blue-600 scrollbar-track-gray-200"
+            className="bg-white rounded-[20px] p-4 sm:p-8 max-w-2xl w-full max-h-[95vh] sm:max-h-[80vh] overflow-y-auto scrollbar-thin scrollbar-thumb-blue-600 scrollbar-track-gray-200"
             style={{
-              scrollbarWidth: 'thin',
-              scrollbarColor: '#2563eb #e5e7eb'
+              scrollbarWidth: "thin",
+              scrollbarColor: "#2563eb #e5e7eb",
+              WebkitOverflowScrolling: "touch",
             }}
             variants={modalVariants}
             initial="hidden"
@@ -202,7 +265,7 @@ function ServiceModal({ isOpen, onClose, service }) {
             </div>
 
             {/* Modal Content */}
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {/* Service Description */}
               <div>
                 <h3 className="text-lg font-semibold font-['Work_Sans'] text-neutral-800 mb-3">
@@ -263,7 +326,8 @@ function ServiceModal({ isOpen, onClose, service }) {
                   Ready to Get Started?
                 </h3>
                 <p className="text-gray-700 font-['Work_Sans'] mb-4">
-                  Let's discuss how this service can help transform your business and achieve your goals.
+                  Let's discuss how this service can help transform your
+                  business and achieve your goals.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <motion.button
@@ -292,7 +356,8 @@ function ServiceModal({ isOpen, onClose, service }) {
                 <div className="border-t border-gray-200 pt-6 mt-6">
                   <div className="text-center">
                     <p className="text-gray-600 font-['Work_Sans'] mb-3">
-                      Interested? You can also check me out on Fiverr for quick package options
+                      Interested? You can also check me out on Fiverr for quick
+                      package options
                     </p>
                     <motion.button
                       className="inline-flex items-center gap-2 px-4 py-2 text-green-600 hover:text-green-700 font-medium font-['Work_Sans'] transition-colors duration-200"
@@ -301,13 +366,25 @@ function ServiceModal({ isOpen, onClose, service }) {
                       transition={{ duration: 0 }}
                       onClick={openFiverrGig}
                     >
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="flex-shrink-0">
-                        <rect width="20" height="20" rx="3" fill="currentColor" fillOpacity="0.1"/>
-                        <path d="M4 4.5H16V5.5H4V4.5Z" fill="currentColor"/>
-                        <path d="M4 7.5H16V8.5H4V7.5Z" fill="currentColor"/>
-                        <path d="M4 10.5H16V11.5H4V10.5Z" fill="currentColor"/>
-                        <path d="M4 13.5H16V14.5H4V13.5Z" fill="currentColor"/>
-                        <circle cx="14" cy="5" r="2" fill="currentColor"/>
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        className="flex-shrink-0"
+                      >
+                        <rect
+                          width="20"
+                          height="20"
+                          rx="3"
+                          fill="currentColor"
+                          fillOpacity="0.1"
+                        />
+                        <path d="M4 4.5H16V5.5H4V4.5Z" fill="currentColor" />
+                        <path d="M4 7.5H16V8.5H4V7.5Z" fill="currentColor" />
+                        <path d="M4 10.5H16V11.5H4V10.5Z" fill="currentColor" />
+                        <path d="M4 13.5H16V14.5H4V13.5Z" fill="currentColor" />
+                        <circle cx="14" cy="5" r="2" fill="currentColor" />
                       </svg>
                       View on Fiverr
                     </motion.button>

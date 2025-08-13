@@ -59,7 +59,8 @@ function AchievementSection() {
   return (
     <motion.section
       id="achievements"
-      className="w-full h-[678px] relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 overflow-hidden"
+      npr
+      className="w-full min-h-[1300px] lg:min-h-[678px] relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 overflow-hidden"
     >
       {/* Background Pattern/Depth Elements */}
       <div className="absolute inset-0">
@@ -76,7 +77,7 @@ function AchievementSection() {
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <div className="text-white/80 text-lg font-semibold font-['Work_Sans'] uppercase tracking-widest drop-shadow-sm">
+        <div className="text-white/80 text-lg font-semibold font-['Work_Sans'] uppercase tracking-widest drop-shadow-sm text-center px-4">
           {text1.split("").map((char, index) => (
             <motion.span
               key={index}
@@ -96,7 +97,7 @@ function AchievementSection() {
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <div className="text-white text-3xl font-bold font-['Work_Sans'] leading-[40px] drop-shadow-md">
+        <div className="text-white text-3xl font-bold font-['Work_Sans'] leading-[40px] drop-shadow-md text-center px-4">
           {text2.split("").map((char, index) => (
             <motion.span
               key={index}
@@ -110,14 +111,14 @@ function AchievementSection() {
       </motion.div>
 
       <motion.div
-        className="w-full py-8 left-0 top-[240px] absolute inline-flex justify-center items-start gap-7 z-10"
+        className="w-full py-8 left-0 top-[240px] absolute flex flex-col lg:flex-row justify-center items-center gap-7 z-10"
         variants={boxContainerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
       >
         <motion.div
-          className="w-72 p-7 bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl shadow-blue-900/30 border border-blue-200/20 inline-flex flex-col justify-center items-center gap-3.5"
+          className="w-72 p-7 bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl shadow-blue-900/30 border border-blue-200/20 flex flex-col justify-center items-center gap-3.5"
           variants={boxVariants}
           whileHover={{
             scale: 1.05,
@@ -136,7 +137,7 @@ function AchievementSection() {
         </motion.div>
 
         <motion.div
-          className="w-72 p-7 bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl shadow-blue-900/30 border border-blue-200/20 inline-flex flex-col justify-center items-center gap-3.5"
+          className="w-72 p-7 bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl shadow-blue-900/30 border border-blue-200/20 flex flex-col justify-center items-center gap-3.5"
           variants={boxVariants}
           whileHover={{
             scale: 1.05,
@@ -155,7 +156,7 @@ function AchievementSection() {
         </motion.div>
 
         <motion.div
-          className="w-72 p-7 bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl shadow-blue-900/30 border border-blue-200/20 inline-flex flex-col justify-center items-center gap-3.5"
+          className="w-72 p-7 bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl shadow-blue-900/30 border border-blue-200/20 flex flex-col justify-center items-center gap-3.5"
           variants={boxVariants}
           whileHover={{
             scale: 1.05,
@@ -174,7 +175,7 @@ function AchievementSection() {
         </motion.div>
 
         <motion.div
-          className="w-72 p-7 bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl shadow-blue-900/30 border border-blue-200/20 inline-flex flex-col justify-center items-center gap-3.5"
+          className="w-72 p-7 bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl shadow-blue-900/30 border border-blue-200/20 flex flex-col justify-center items-center gap-3.5"
           variants={boxVariants}
           whileHover={{
             scale: 1.05,

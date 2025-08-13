@@ -129,177 +129,337 @@ function PortfolioSection() {
       transition={{ duration: 0.8 }}
       viewport={{ once: true, amount: 0.2 }}
     >
-      <motion.div
-        key={currentTitle}
-        className="w-full max-w-[1400px] text-center justify-start text-neutral-800 text-4xl font-bold font-['Work_Sans'] leading-[40px]"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-      >
-        {currentTitle}
-      </motion.div>
+      {/* Mobile Layout (hidden on lg and up) */}
+      <div className="lg:hidden w-96 px-2.5 py-7 bg-white inline-flex flex-col justify-start items-center gap-7">
+        <div className="flex flex-col justify-start items-center gap-3.5">
+          <div className="w-96 text-center justify-start text-blue-600 text-lg font-semibold font-['Work_Sans'] uppercase leading-none tracking-widest">
+            Our projects
+          </div>
+          <div className="w-96 text-center justify-start text-neutral-800 text-4xl font-bold font-['Work_Sans'] leading-10">
+            Presenting My Design Portfolio and Case Studies
+          </div>
+        </div>
+        <div className="w-96 inline-flex justify-center items-start gap-3.5 flex-wrap content-start">
+          <motion.button
+            className={`px-5 py-4 rounded-[50px] flex justify-center items-center ${
+              activeSection === "websites"
+                ? "bg-blue-600 text-white"
+                : "bg-white outline outline-1 outline-offset-[-1px] outline-blue-600 text-blue-600"
+            }`}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            onClick={() => setActiveSection("websites")}
+          >
+            <div className="justify-start text-base font-semibold font-['Work_Sans'] leading-none">
+              Websites
+            </div>
+          </motion.button>
+          <motion.button
+            className={`px-5 py-4 rounded-[50px] flex justify-center items-center ${
+              activeSection === "testing"
+                ? "bg-blue-600 text-white"
+                : "bg-white outline outline-1 outline-offset-[-1px] outline-blue-600 text-blue-600"
+            }`}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            onClick={() => setActiveSection("testing")}
+          >
+            <div className="justify-start text-base font-semibold font-['Work_Sans'] leading-none">
+              Testing
+            </div>
+          </motion.button>
+          <motion.button
+            className={`px-5 py-4 rounded-[50px] flex justify-center items-center ${
+              activeSection === "projects"
+                ? "bg-blue-600 text-white"
+                : "bg-white outline outline-1 outline-offset-[-1px] outline-blue-600 text-blue-600"
+            }`}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            onClick={() => setActiveSection("projects")}
+          >
+            <div className="justify-start text-base font-semibold font-['Work_Sans'] leading-none">
+              Projects
+            </div>
+          </motion.button>
+        </div>
+        <div className="w-96 flex flex-col justify-center items-start gap-7">
+          {/* Single Portfolio Card for Mobile */}
+          {currentItems.map((item) => (
+            <motion.div
+              key={item.id}
+              className="bg-white hover:bg-blue-600 rounded-2xl outline outline-1 outline-offset-[-1px] outline-neutral-200 hover:outline-blue-600 flex flex-col justify-start items-start cursor-pointer transition-all duration-200 group"
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+              whileHover={{
+                y: -10,
+                boxShadow: "0 20px 40px rgba(37, 99, 235, 0.2)",
+              }}
+              transition={{ duration: 0.15, ease: "easeOut" }}
+              onClick={() => setSelectedProject(item)}
+            >
+              {activeSection === "testing" ? (
+                <div className="w-96 h-80 relative overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center rounded-t-2xl">
+                  <motion.div
+                    className="text-blue-600 transition-all duration-200 group-hover:scale-105"
+                    initial={{ scale: 1 }}
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    <svg
+                      width="80"
+                      height="80"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <rect x="3" y="4" width="18" height="15" rx="2" ry="2" />
+                      <line x1="3" y1="9" x2="21" y2="9" />
+                      <circle cx="6.5" cy="6.5" r="0.5" />
+                      <circle cx="8.5" cy="6.5" r="0.5" />
+                      <circle cx="10.5" cy="6.5" r="0.5" />
+                    </svg>
+                  </motion.div>
+                </div>
+              ) : (
+                <div className="w-96 h-80 relative overflow-hidden rounded-t-2xl">
+                  <motion.img
+                    className="w-full h-full object-cover transition-all duration-200 group-hover:scale-105"
+                    src={item.websiteImage}
+                    alt={`${item.companyName} ${
+                      activeSection === "websites" ? "website" : "project"
+                    }`}
+                  />
+                </div>
+              )}
 
-      <motion.div
-        key={currentSubtitle}
-        className="text-center justify-start text-blue-600 text-lg font-semibold font-['Work_Sans'] uppercase tracking-widest"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.4 }}
-      >
-        {currentSubtitle}
-      </motion.div>
+              <div className="w-full p-6 flex items-center gap-4">
+                <motion.img
+                  className={`w-10 h-10 rounded-full bg-gray-100 flex-shrink-0 transition-all duration-300 ${
+                    item.companyName === "Matas Tijusas"
+                      ? "object-cover"
+                      : "object-contain"
+                  }`}
+                  src={item.logoUrl}
+                  alt={`${item.companyName} logo`}
+                />
+                <div className="flex-1">
+                  <h3 className="text-lg font-bold font-['Work_Sans'] text-neutral-800 group-hover:text-white mb-1 transition-colors duration-300">
+                    {item.companyName}
+                  </h3>
+                  <p className="text-sm font-medium font-['Work_Sans'] text-gray-600 group-hover:text-white/90 transition-colors duration-300">
+                    {item.websiteName}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
 
-      {/* Buttons */}
-      <div className="flex gap-3 mb-3 flex-wrap justify-center">
-        <motion.button
-          className={`px-5 py-2 rounded-[50px] text-base font-semibold font-['Work_Sans'] whitespace-nowrap ${
-            activeSection === "websites"
-              ? "bg-blue-600 text-white"
-              : "bg-white outline outline-1 outline-blue-600 text-blue-600"
-          }`}
-          whileHover={{
-            scale: 1.05,
-          }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          onClick={() => setActiveSection("websites")}
-        >
-          Websites
-        </motion.button>
-        <motion.button
-          className={`px-5 py-2 rounded-[50px] text-base font-semibold font-['Work_Sans'] whitespace-nowrap ${
-            activeSection === "testing"
-              ? "bg-blue-600 text-white"
-              : "bg-white outline outline-1 outline-blue-600 text-blue-600"
-          }`}
-          whileHover={{
-            scale: 1.05,
-          }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          onClick={() => setActiveSection("testing")}
-        >
-          Testing
-        </motion.button>
-        <motion.button
-          className={`px-5 py-2 rounded-[50px] text-base font-semibold font-['Work_Sans'] whitespace-nowrap ${
-            activeSection === "projects"
-              ? "bg-blue-600 text-white"
-              : "bg-white outline outline-1 outline-blue-600 text-blue-600"
-          }`}
-          whileHover={{
-            scale: 1.05,
-          }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          onClick={() => setActiveSection("projects")}
-        >
-          Projects
-        </motion.button>
+          {/* Coming Soon Text for Mobile */}
+          <motion.div
+            className="w-96 flex flex-col justify-center items-center text-center py-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl font-bold text-gray-300 font-['Work_Sans'] mb-4 leading-tight">
+              Coming Soon
+            </h2>
+            <p className="text-lg text-gray-400 font-['Work_Sans'] leading-relaxed">
+              More real{" "}
+              {activeSection === "testing"
+                ? "security testing projects"
+                : activeSection === "websites"
+                ? "website development projects"
+                : "individual development projects"}{" "}
+              will be added here as I complete work for clients and expand my
+              portfolio.
+            </p>
+          </motion.div>
+        </div>
       </div>
 
-      <motion.div
-        key={activeSection}
-        className="max-w-[1400px] w-full flex justify-center items-center gap-8 px-4"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        {/* Single Portfolio Card */}
-        {currentItems.map((item) => (
-          <motion.div
-            key={item.id}
-            className="bg-white hover:bg-blue-600 rounded-2xl outline outline-1 outline-offset-[-1px] outline-neutral-200 hover:outline-blue-600 inline-flex flex-col justify-start items-start overflow-hidden group cursor-pointer transition-all duration-200 flex-shrink-0"
-            variants={itemVariants}
-            whileHover={{
-              y: -10,
-              boxShadow: "0 20px 40px rgba(37, 99, 235, 0.2)",
-            }}
-            transition={{ duration: 0.15, ease: "easeOut" }}
-            onClick={() => setSelectedProject(item)}
-          >
-            {activeSection === "testing" ? (
-              <div className="w-96 h-96 relative overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center">
-                <motion.div
-                  className="text-blue-600 transition-all duration-200 group-hover:scale-105"
-                  initial={{ scale: 1 }}
-                  whileHover={{ scale: 1.1 }}
-                >
-                  <svg
-                    width="120"
-                    height="120"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <rect x="3" y="4" width="18" height="15" rx="2" ry="2" />
-                    <line x1="3" y1="9" x2="21" y2="9" />
-                    <circle cx="6.5" cy="6.5" r="0.5" />
-                    <circle cx="8.5" cy="6.5" r="0.5" />
-                    <circle cx="10.5" cy="6.5" r="0.5" />
-                  </svg>
-                </motion.div>
-              </div>
-            ) : (
-              <div className="w-96 h-96 relative overflow-hidden">
-                <motion.img
-                  className="w-full h-full object-cover rounded-t-2xl transition-all duration-200 group-hover:scale-105"
-                  src={item.websiteImage}
-                  alt={`${item.companyName} ${
-                    activeSection === "websites" ? "website" : "project"
-                  }`}
-                />
-              </div>
-            )}
-
-            <div className="w-full p-6 flex items-center gap-4">
-              <motion.img
-                className={`w-10 h-10 rounded-full bg-gray-100 flex-shrink-0 transition-all duration-300 ${
-                  item.companyName === "Matas Tijusas"
-                    ? "object-cover"
-                    : "object-contain"
-                }`}
-                src={item.logoUrl}
-                alt={`${item.companyName} logo`}
-              />
-              <div className="flex-1">
-                <h3 className="text-lg font-bold font-['Work_Sans'] text-neutral-800 group-hover:text-white mb-1 transition-colors duration-300">
-                  {item.companyName}
-                </h3>
-                <p className="text-sm font-medium font-['Work_Sans'] text-gray-600 group-hover:text-white/90 transition-colors duration-300">
-                  {item.websiteName}
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        ))}
-
-        {/* Coming Soon Text on the Right */}
+      {/* Desktop Layout (hidden on mobile, visible on lg and up) */}
+      <div className="hidden lg:flex flex-col justify-start items-center gap-6 w-full">
         <motion.div
-          className="w-96 flex flex-col justify-center items-start text-left px-8"
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          viewport={{ once: true }}
+          key={currentTitle}
+          className="w-full max-w-[1400px] text-center justify-start text-neutral-800 text-4xl font-bold font-['Work_Sans'] leading-[40px]"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-300 font-['Work_Sans'] mb-6 leading-tight whitespace-nowrap">
-            Coming Soon
-          </h2>
-          <p className="text-lg text-gray-400 font-['Work_Sans'] leading-relaxed">
-            More real{" "}
-            {activeSection === "testing"
-              ? "security testing projects"
-              : activeSection === "websites"
-              ? "website development projects"
-              : "individual development projects"}{" "}
-            will be added here as I complete work for clients and expand my
-            portfolio.
-          </p>
+          {currentTitle}
         </motion.div>
-      </motion.div>
+
+        <motion.div
+          key={currentSubtitle}
+          className="text-center justify-start text-blue-600 text-lg font-semibold font-['Work_Sans'] uppercase tracking-widest"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          {currentSubtitle}
+        </motion.div>
+
+        {/* Buttons */}
+        <div className="flex gap-3 mb-3 flex-wrap justify-center">
+          <motion.button
+            className={`px-5 py-2 rounded-[50px] text-base font-semibold font-['Work_Sans'] whitespace-nowrap ${
+              activeSection === "websites"
+                ? "bg-blue-600 text-white"
+                : "bg-white outline outline-1 outline-blue-600 text-blue-600"
+            }`}
+            whileHover={{
+              scale: 1.05,
+            }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            onClick={() => setActiveSection("websites")}
+          >
+            Websites
+          </motion.button>
+          <motion.button
+            className={`px-5 py-2 rounded-[50px] text-base font-semibold font-['Work_Sans'] whitespace-nowrap ${
+              activeSection === "testing"
+                ? "bg-blue-600 text-white"
+                : "bg-white outline outline-1 outline-blue-600 text-blue-600"
+            }`}
+            whileHover={{
+              scale: 1.05,
+            }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            onClick={() => setActiveSection("testing")}
+          >
+            Testing
+          </motion.button>
+          <motion.button
+            className={`px-5 py-2 rounded-[50px] text-base font-semibold font-['Work_Sans'] whitespace-nowrap ${
+              activeSection === "projects"
+                ? "bg-blue-600 text-white"
+                : "bg-white outline outline-1 outline-blue-600 text-blue-600"
+            }`}
+            whileHover={{
+              scale: 1.05,
+            }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            onClick={() => setActiveSection("projects")}
+          >
+            Projects
+          </motion.button>
+        </div>
+
+        <motion.div
+          key={activeSection}
+          className="max-w-[1400px] w-full flex justify-center items-center gap-8 px-4"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {/* Single Portfolio Card */}
+          {currentItems.map((item) => (
+            <motion.div
+              key={item.id}
+              className="bg-white hover:bg-blue-600 rounded-2xl outline outline-1 outline-offset-[-1px] outline-neutral-200 hover:outline-blue-600 inline-flex flex-col justify-start items-start overflow-hidden group cursor-pointer transition-all duration-200 flex-shrink-0"
+              variants={itemVariants}
+              whileHover={{
+                y: -10,
+                boxShadow: "0 20px 40px rgba(37, 99, 235, 0.2)",
+              }}
+              transition={{ duration: 0.15, ease: "easeOut" }}
+              onClick={() => setSelectedProject(item)}
+            >
+              {activeSection === "testing" ? (
+                <div className="w-96 h-96 relative overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center">
+                  <motion.div
+                    className="text-blue-600 transition-all duration-200 group-hover:scale-105"
+                    initial={{ scale: 1 }}
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    <svg
+                      width="120"
+                      height="120"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <rect x="3" y="4" width="18" height="15" rx="2" ry="2" />
+                      <line x1="3" y1="9" x2="21" y2="9" />
+                      <circle cx="6.5" cy="6.5" r="0.5" />
+                      <circle cx="8.5" cy="6.5" r="0.5" />
+                      <circle cx="10.5" cy="6.5" r="0.5" />
+                    </svg>
+                  </motion.div>
+                </div>
+              ) : (
+                <div className="w-96 h-96 relative overflow-hidden">
+                  <motion.img
+                    className="w-full h-full object-cover rounded-t-2xl transition-all duration-200 group-hover:scale-105"
+                    src={item.websiteImage}
+                    alt={`${item.companyName} ${
+                      activeSection === "websites" ? "website" : "project"
+                    }`}
+                  />
+                </div>
+              )}
+
+              <div className="w-full p-6 flex items-center gap-4">
+                <motion.img
+                  className={`w-10 h-10 rounded-full bg-gray-100 flex-shrink-0 transition-all duration-300 ${
+                    item.companyName === "Matas Tijusas"
+                      ? "object-cover"
+                      : "object-contain"
+                  }`}
+                  src={item.logoUrl}
+                  alt={`${item.companyName} logo`}
+                />
+                <div className="flex-1">
+                  <h3 className="text-lg font-bold font-['Work_Sans'] text-neutral-800 group-hover:text-white mb-1 transition-colors duration-300">
+                    {item.companyName}
+                  </h3>
+                  <p className="text-sm font-medium font-['Work_Sans'] text-gray-600 group-hover:text-white/90 transition-colors duration-300">
+                    {item.websiteName}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+
+          {/* Coming Soon Text on the Right */}
+          <motion.div
+            className="w-96 flex flex-col justify-center items-start text-left px-8"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-300 font-['Work_Sans'] mb-6 leading-tight whitespace-nowrap">
+              Coming Soon
+            </h2>
+            <p className="text-lg text-gray-400 font-['Work_Sans'] leading-relaxed">
+              More real{" "}
+              {activeSection === "testing"
+                ? "security testing projects"
+                : activeSection === "websites"
+                ? "website development projects"
+                : "individual development projects"}{" "}
+              will be added here as I complete work for clients and expand my
+              portfolio.
+            </p>
+          </motion.div>
+        </motion.div>
+      </div>
 
       {/* Project Details Modal */}
       <AnimatePresence>
