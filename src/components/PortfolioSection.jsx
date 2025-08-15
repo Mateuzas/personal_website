@@ -1,4 +1,3 @@
-
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import htbLogo from "../assets/smaller_HTB.png";
