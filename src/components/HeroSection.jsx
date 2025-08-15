@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import profileImg from "../assets/IMG_3158.jpg";
+import cvFile from "../assets/CV.pdf";
 import {
   variants,
   transitions,
@@ -11,7 +12,7 @@ function HeroSection() {
   const handleDownloadCV = () => {
     // Create a link element and trigger download
     const link = document.createElement("a");
-    link.href = "/CV.pdf"; // File should be placed in the public folder
+    link.href = cvFile;
     link.download = "Matas_Tijusas_CV.pdf"; // This will be the downloaded filename
     document.body.appendChild(link);
     link.click();
