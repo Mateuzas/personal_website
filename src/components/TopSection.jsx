@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import logo from "../assets/favicon_dark.png";
 
 function TopSection() {
   const [activeSection, setActiveSection] = useState("hero");
@@ -85,7 +86,7 @@ function TopSection() {
           onClick={handleRefreshPage}
         >
           <img
-            src="/favicon_dark.png"
+            src={logo}
             alt="Matas Tijusas Logo"
             className="w-full h-full object-contain"
           />

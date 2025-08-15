@@ -1,5 +1,14 @@
+
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import htbLogo from "../assets/smaller_HTB.png";
+import htbImage from "../assets/HTB_1.png";
+import htbModal from "../assets/HTB-Logo-RGB_BRC-Site-300.png";
+import portfolioLogo from "../assets/IMG_3158.jpg";
+import portfolioImage from "../assets/copy_screenshot.png";
+import portfolioModal from "../assets/Screenshot 2025-08-08 175141.png";
+import piHoleLogo from "../assets/pi-hole_logo.png";
+import piHoleImage from "../assets/Raspberry_Pi_4_Model_B_-_Side.jpg";
 
 function PortfolioSection() {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -10,9 +19,9 @@ function PortfolioSection() {
       id: 1,
       companyName: "HackTheBox",
       websiteName: "BabySQL Challenge",
-      logoUrl: "/src/assets/smaller_HTB.png",
-      websiteImage: "/src/assets/HTB_1.png",
-      modalImage: "/src/assets/HTB-Logo-RGB_BRC-Site-300.png",
+      logoUrl: htbLogo,
+      websiteImage: htbImage,
+      modalImage: htbModal,
       description:
         "Successfully completed HackTheBox's BabySQL challenge, a medium-level web security exercise focused on SQL injection exploitation. Demonstrated advanced bypass techniques to extract sensitive database information.",
       testingScope: [
@@ -34,9 +43,9 @@ function PortfolioSection() {
       id: 1,
       companyName: "Matas Tijusas",
       websiteName: "Personal Portfolio Website",
-      logoUrl: "/src/assets/IMG_3158.jpg",
-      websiteImage: "/src/assets/copy_screenshot.png",
-      modalImage: "/src/assets/Screenshot 2025-08-08 175141.png",
+      logoUrl: portfolioLogo,
+      websiteImage: portfolioImage,
+      modalImage: portfolioModal,
       description:
         "Developed and designed my personal cybersecurity portfolio website using modern web technologies. Features responsive design, smooth animations, professional contact integration, and showcases my security testing and web development expertise.",
       testingScope: [
@@ -59,9 +68,9 @@ function PortfolioSection() {
       id: 1,
       companyName: "Pi-hole Network Security",
       websiteName: "Raspberry Pi Project",
-      logoUrl: "/src/assets/pi-hole_logo.png",
-      websiteImage: "/src/assets/Raspberry_Pi_4_Model_B_-_Side.jpg",
-      modalImage: "/src/assets/Raspberry_Pi_4_Model_B_-_Side.jpg",
+      logoUrl: piHoleLogo,
+      websiteImage: piHoleImage,
+      modalImage: piHoleImage,
       description:
         "Implemented a network-wide ad and tracker blocking solution using Pi-hole on a Raspberry Pi. This project provides DNS-level blocking to protect all devices on the network from advertisements, malicious domains, and tracking scripts, improving both security and browsing experience.",
       testingScope: [
