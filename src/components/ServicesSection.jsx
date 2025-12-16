@@ -5,7 +5,7 @@ import {
   hoverEffects,
   viewport,
 } from "../utils/animations";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import ServiceModal from "./ServiceModal";
 
 function ServicesSection() {
@@ -328,6 +328,36 @@ function ServicesSection() {
     );
   };
 
+  // Touch / swipe handling for mobile: one swipe -> one step
+  const touchStartX = useRef(null);
+  const touchEndX = useRef(null);
+
+  const onTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchEndX.current = null;
+  };
+
+  const onTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const onTouchEnd = () => {
+    if (touchStartX.current == null || touchEndX.current == null) return;
+    const delta = touchEndX.current - touchStartX.current;
+    const threshold = 50; // px - adjust sensitivity
+    if (Math.abs(delta) > threshold) {
+      if (delta > 0) {
+        // swipe right -> previous
+        handlePrevService();
+      } else {
+        // swipe left -> next
+        handleNextService();
+      }
+    }
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
   return (
     <motion.section
       id="services"
@@ -340,7 +370,12 @@ function ServicesSection() {
     >
       {/* Mobile Layout (hidden on lg and up) */}
       <div className="lg:hidden w-full flex justify-center items-center px-4">
-        <div className="w-full max-w-sm px-2.5 py-6 bg-white flex flex-col justify-start items-center gap-5">
+        <div
+          className="w-full max-w-sm px-2.5 py-6 bg-white flex flex-col justify-start items-center gap-5"
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
           <div className="w-full flex flex-col justify-start items-center gap-3.5">
             <div className="text-blue-600 text-lg font-semibold font-['Work_Sans'] uppercase leading-none tracking-widest text-center">
               Services
@@ -360,43 +395,7 @@ function ServicesSection() {
             </div>
           </div>
 
-          {/* Navigation arrows */}
-          <div className="w-full flex justify-center items-center gap-5">
-            <motion.button
-              className="w-12 h-12 bg-white rounded-[50px] outline outline-1 outline-offset-[-1px] outline-blue-600 flex justify-center items-center cursor-pointer"
-              onClick={handlePrevService}
-              whileHover={{ scale: 1.1, backgroundColor: "#eff6ff" }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.2 }}
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M15 18L9 12L15 6"
-                  stroke="#2563eb"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </motion.button>
-            <motion.button
-              className="w-12 h-12 bg-white rounded-[50px] outline outline-1 outline-offset-[-1px] outline-blue-600 flex justify-center items-center cursor-pointer"
-              onClick={handleNextService}
-              whileHover={{ scale: 1.1, backgroundColor: "#eff6ff" }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.2 }}
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M9 18L15 12L9 6"
-                  stroke="#2563eb"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </motion.button>
-          </div>
+          {/* Navigation arrows removed for mobile; swipe gestures handle navigation now */}
 
           {/* Services card */}
           <div className="w-full flex justify-center">
