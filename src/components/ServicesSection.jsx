@@ -5,7 +5,7 @@ import {
   hoverEffects,
   viewport,
 } from "../utils/animations";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import ServiceModal from "./ServiceModal";
 
 function ServicesSection() {
@@ -287,21 +287,23 @@ function ServicesSection() {
   };
 
   const handleMouseEnter = (index) => {
-    setHoveredIndex(index);
-    if (!hasInteracted) {
-      setHasInteracted(true);
-    }
+    // hover behavior removed — keep empty for now
   };
 
   const handleMouseLeave = () => {
-    setHoveredIndex(null);
+    // hover behavior removed
   };
 
   const isCardBlue = (index) => {
-    if (hasInteracted) {
-      return hoveredIndex === index;
+    // Only mark a card 'blue' on small screens when it's the active mobile card.
+    // On desktop we keep all cards white (no hover-driven highlight).
+    try {
+      const isMobile =
+        typeof window !== "undefined" && window.innerWidth < 1024;
+      return isMobile && index === currentServiceIndex;
+    } catch (e) {
+      return false;
     }
-    return index === 0; // First card is blue by default
   };
 
   const handleLearnMoreClick = (service, index) => {
@@ -331,6 +333,17 @@ function ServicesSection() {
   // Touch / swipe handling for mobile: one swipe -> one step
   const touchStartX = useRef(null);
   const touchEndX = useRef(null);
+
+  // Track viewport size to distinguish mobile vs desktop reliably
+  const [isMobileView, setIsMobileView] = useState(
+    typeof window !== "undefined" ? window.innerWidth < 1024 : true
+  );
+
+  useEffect(() => {
+    const onResize = () => setIsMobileView(window.innerWidth < 1024);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   const onTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX;
@@ -423,20 +436,51 @@ function ServicesSection() {
 
               {/* Learn more */}
               <motion.div
-                className="inline-flex justify-center items-center gap-2.5 cursor-pointer mt-4"
-                whileHover={{ x: 5 }}
-                transition={{ duration: 0.2 }}
+                className="inline-flex justify-center items-center gap-2.5 cursor-pointer mt-4 px-3 py-2 rounded-[30px] border transition-colors"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.15 }}
                 onClick={() =>
                   handleLearnMoreClick(
                     services[currentServiceIndex],
                     currentServiceIndex
                   )
                 }
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter")
+                    handleLearnMoreClick(
+                      services[currentServiceIndex],
+                      currentServiceIndex
+                    );
+                }}
+                style={{
+                  // Learn more button: blue fill with white text
+                  backgroundColor: "#2563eb",
+                  borderColor: "#2563eb",
+                  color: "#ffffff",
+                }}
               >
-                <div className="text-lg font-normal font-['Work_Sans'] leading-7 text-blue-600">
+                <div
+                  className="text-lg font-normal font-['Work_Sans'] leading-7"
+                  style={{ fontWeight: 700 }}
+                >
                   Learn more
                 </div>
-                <div className="w-6 h-0 border-2 border-blue-600" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-4 h-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="white"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
               </motion.div>
             </motion.div>
           </div>
@@ -532,7 +576,7 @@ function ServicesSection() {
               <motion.div
                 key={index}
                 className={`w-full sm:min-w-[300px] md:min-w-[350px] lg:min-w-[384px] p-6 sm:p-7 rounded-[10px] flex flex-col justify-start items-start gap-2.5 transition-all duration-500 group ${
-                  isCardBlue(index)
+                  isMobileView && isCardBlue(index)
                     ? "bg-blue-600 text-white"
                     : "bg-white outline outline-1 outline-offset-[-1px] outline-neutral-200 text-black"
                 }`}
@@ -553,14 +597,7 @@ function ServicesSection() {
                   scale: { type: "spring", stiffness: 300, damping: 25 },
                 }}
                 viewport={viewport}
-                onMouseEnter={() => handleMouseEnter(index)}
-                onMouseLeave={handleMouseLeave}
-                whileHover={{
-                  scale: 1.03,
-                  y: -5,
-                  boxShadow: "0 20px 40px rgba(37, 99, 235, 0.2)",
-                  transition: { duration: 0.15, ease: "easeOut" },
-                }}
+                // hover handlers removed — cards are not interactive
                 animate={{
                   scale: 1,
                   y: 0,
@@ -576,13 +613,15 @@ function ServicesSection() {
               >
                 {/* Icon Container */}
                 <div className="w-80 h-20 relative overflow-hidden mb-2">
-                  {getServiceIcon(index, isCardBlue(index))}
+                  {getServiceIcon(index, isMobileView && isCardBlue(index))}
                 </div>
 
                 {/* Title */}
                 <div
                   className={`w-80 text-2xl font-bold font-['Work_Sans'] leading-loose transition-colors duration-500 ${
-                    isCardBlue(index) ? "text-white" : "text-black"
+                    isMobileView && isCardBlue(index)
+                      ? "text-white"
+                      : "text-black"
                   }`}
                 >
                   {service.title}
@@ -591,7 +630,9 @@ function ServicesSection() {
                 {/* Description */}
                 <div
                   className={`w-80 h-24 text-lg font-normal font-['Work_Sans'] leading-7 transition-colors duration-500 ${
-                    isCardBlue(index) ? "text-white" : "text-zinc-800"
+                    isMobileView && isCardBlue(index)
+                      ? "text-white"
+                      : "text-zinc-800"
                   }`}
                 >
                   {service.description}
@@ -599,25 +640,42 @@ function ServicesSection() {
 
                 {/* Learn More Link */}
                 <motion.div
-                  className="inline-flex justify-center items-center gap-2.5 cursor-pointer"
-                  whileHover={{ x: 5 }}
-                  transition={{ duration: 0.2 }}
+                  className="inline-flex justify-center items-center gap-2.5 cursor-pointer px-3 py-2 rounded-[30px] border transition-colors"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.15 }}
                   onClick={() => handleLearnMoreClick(service, index)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") handleLearnMoreClick(service, index);
+                  }}
+                  style={{
+                    // Learn more button: blue fill with white text
+                    backgroundColor: "#2563eb",
+                    borderColor: "#2563eb",
+                    color: "#ffffff",
+                  }}
                 >
                   <div
-                    className={`text-lg font-normal font-['Work_Sans'] leading-7 transition-all duration-500 ${
-                      isCardBlue(index)
-                        ? "text-white group-hover:font-bold"
-                        : "text-blue-600 hover:font-bold"
-                    }`}
+                    className="text-lg font-normal font-['Work_Sans'] leading-7"
+                    style={{ fontWeight: 700 }}
                   >
                     Learn more
                   </div>
-                  <div
-                    className={`w-6 h-0 border-2 transition-colors duration-500 ${
-                      isCardBlue(index) ? "border-white" : "border-blue-600"
-                    }`}
-                  />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-4 h-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="white"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
                 </motion.div>
               </motion.div>
             ))}
@@ -632,39 +690,7 @@ function ServicesSection() {
         service={selectedService}
       />
 
-      {/* Custom Scrollbar Styles */}
-      <style jsx>{`
-        .custom-scrollbar {
-          scrollbar-width: thick;
-          scrollbar-color: #2563eb #f1f5f9;
-          scrollbar-gutter: stable;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar {
-          height: 12px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: #f1f5f9;
-          border-radius: 6px;
-          margin: 0 20px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: #2563eb;
-          border-radius: 6px;
-          transition: background-color 0.3s ease;
-          border: 1px solid #f1f5f9;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: #1d4ed8;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-corner {
-          background: transparent;
-        }
-      `}</style>
+      {/* Custom Scrollbar Styles were removed — project uses global CSS in index.css */}
     </motion.section>
   );
 }
