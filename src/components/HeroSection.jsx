@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import profileImg from "../assets/IMG_3158.jpg";
+import profileImg from "../assets/main_profile.jpg";
 import cvFile from "../assets/CV.pdf";
 import {
   variants,
@@ -47,7 +47,6 @@ function HeroSection() {
             alt="Profile"
             variants={variants.slideRightScale}
             transition={transitions.smoothDelayed(0.5)}
-            whileHover={hoverEffects.image}
           />
           <div className="w-full px-2.5 flex flex-col justify-start items-start gap-7">
             <div className="flex flex-col justify-start items-start gap-3.5">
@@ -228,7 +227,6 @@ function HeroSection() {
           alt="Profile"
           variants={variants.slideRightScale}
           transition={transitions.smoothDelayed(0.5)}
-          whileHover={hoverEffects.image}
         />
       </div>
     </motion.section>

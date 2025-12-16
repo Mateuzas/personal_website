@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import skillsImage from "../assets/IMG_4987.jpg";
 import certificationImage from "../assets/IMG_3265.png";
 import educationImage from "../assets/images.jpg";
-import moreaboutmeImage from "../assets/IMG_4922.jpg";
+import moreaboutmeImage from "../assets/football_pic.webp";
 
 const sections = [
   {
