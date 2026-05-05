@@ -1,520 +1,266 @@
-import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
-import skillsImage from "../assets/IMG_4987.jpg";
-import certificationImage from "../assets/IMG_3265.png";
-import educationImage from "../assets/images.jpg";
-import moreaboutmeImage from "../assets/football_pic.webp";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 
-const sections = [
+const experience = [
   {
-    key: "skills",
-    label: "Main Skills",
-    image: skillsImage,
-    content: (
-      <>
-        <div className="max-w-[620px] text-left">
-          <span className="text-neutral-800 text-base lg:text-lg font-normal font-['Work_Sans'] leading-normal">
-            Hello there! I'm <span className="font-bold">Matas Tijusas</span>. I
-            specialize in cybersecurity and web application testing, and I'm
-            deeply passionate and committed to learning and gaining experience
-            in this craft.
-          </span>
-        </div>
-        <div className="w-full max-w-[620px] space-y-4 mt-4">
-          {/* Skill 1 */}
-          <div>
-            <div className="text-neutral-800 text-base lg:text-lg font-semibold font-['Work_Sans'] mb-1">
-              Penetration Testing & Security Assessment
-            </div>
-            <div className="text-gray-600 text-sm font-['Work_Sans'] mb-2">
-              Learning through hands-on labs and cybersecurity platforms like
-              TryHackMe.
-            </div>
-            <div className="w-full h-4 bg-zinc-100 rounded-[10px] relative overflow-hidden">
-              <motion.div
-                className="h-full bg-blue-600 rounded-[10px]"
-                initial={{ width: 0 }}
-                animate={{ width: "35%" }}
-                transition={{ duration: 1, delay: 0.7 }}
-              />
-            </div>
-          </div>
-          {/* Skill 2 */}
-          <div>
-            <div className="text-neutral-800 text-base lg:text-lg font-semibold font-['Work_Sans'] mb-1">
-              Web Application Security Testing
-            </div>
-            <div className="text-gray-600 text-sm font-['Work_Sans'] mb-2">
-              Practicing with web security challenges and studying OWASP Top 10.
-            </div>
-            <div className="w-full h-4 bg-zinc-100 rounded-[10px] relative overflow-hidden">
-              <motion.div
-                className="h-full bg-blue-600 rounded-[10px]"
-                initial={{ width: 0 }}
-                animate={{ width: "40%" }}
-                transition={{ duration: 1, delay: 0.8 }}
-              />
-            </div>
-          </div>
-          {/* Skill 3 */}
-          <div>
-            <div className="text-neutral-800 text-base lg:text-lg font-semibold font-['Work_Sans'] mb-1">
-              Web Design & Development
-            </div>
-            <div className="text-gray-600 text-sm font-['Work_Sans'] mb-2">
-              Creating modern, responsive websites using React, Vite, Tailwind
-              CSS and Figma for design.
-            </div>
-            <div className="w-full h-4 bg-zinc-100 rounded-[10px] relative overflow-hidden">
-              <motion.div
-                className="h-full bg-blue-600 rounded-[10px]"
-                initial={{ width: 0 }}
-                animate={{ width: "50%" }}
-                transition={{ duration: 1, delay: 0.9 }}
-              />
-            </div>
-          </div>
-        </div>
-      </>
-    ),
+    role: "Bachelor Thesis — Static Analysis of IaC",
+    org: "University of Twente",
+    year: "2026",
+    desc: "Extending the GUARD static-analysis tool to detect security smells across multiple IaC languages (Ansible, Terraform, Puppet).",
+    details: {
+      overview:
+        "Conducting research to extend the GUARD static-analysis tool for detecting security smells and code-quality issues across multiple Infrastructure-as-Code languages. The project contributes to improving secure IaC practices in DevOps environments.",
+      highlights: [
+        "Extending GUARD to support Ansible, Terraform, and Puppet analysis",
+        "Developing detection rules for security smells in IaC configurations",
+        "Researching common vulnerability patterns across IaC languages",
+        "Contributing to open-source tooling for DevSecOps pipelines",
+      ],
+      tech: ["Python", "GUARD framework", "Ansible", "Terraform", "Puppet"],
+    },
   },
   {
-    key: "certifications",
-    label: "Certifications",
-    image: certificationImage,
-    content: (
-      <>
-        <div className="max-w-[620px] text-left">
-          <span className="text-neutral-800 text-base lg:text-lg font-normal font-['Work_Sans'] leading-normal">
-            I am currently preparing for the CompTIA Security+ certification and
-            plan to pursue additional industry-standard cybersecurity
-            certifications to further deepen my expertise and advance my career
-            in the field.
-          </span>
-        </div>
-        <div className="w-full max-w-[620px] space-y-3 mt-4">
-          {/* Certification 1 */}
-          <div>
-            <div className="text-neutral-800 text-base lg:text-lg font-semibold font-['Work_Sans'] mb-1">
-              CompTIA Security+ (Expected 2025)
-            </div>
-            <div className="text-gray-600 text-sm font-['Work_Sans']">
-              Fundamental cybersecurity certification covering network security
-              and compliance.
-            </div>
-          </div>
-          {/* Certification 2 */}
-          <div>
-            <div className="text-neutral-800 text-base lg:text-lg font-semibold font-['Work_Sans'] mb-1">
-              Certified Ethical Hacker (CEH) - In Progress
-            </div>
-            <div className="text-gray-600 text-sm font-['Work_Sans']">
-              Advanced certification focused on ethical hacking and penetration
-              testing.
-            </div>
-          </div>
-          {/* Certification 3 */}
-          <div>
-            <div className="text-neutral-800 text-base lg:text-lg font-semibold font-['Work_Sans'] mb-1">
-              OSCP (Offensive Security Certified Professional) - Planned
-            </div>
-            <div className="text-gray-600 text-sm font-['Work_Sans']">
-              Hands-on penetration testing certification requiring practical
-              exploitation.
-            </div>
-          </div>
-        </div>
-      </>
-    ),
+    role: "Odoo Module Developer",
+    org: "Aardug & Novito",
+    year: "2025 – Present",
+    desc: "Building a custom Odoo module to automate base-price calculation for construction projects. Python, Odoo ORM, Agile team.",
+    details: {
+      overview:
+        "Developing a custom Odoo ERP module for Novito, a construction firm, to automate their base-price calculation workflow. Collaborating with Aardug, an Odoo specialist partner, on architecture design and seamless module integration into the existing system.",
+      highlights: [
+        "Designing and building a custom Odoo module from scratch",
+        "Automating base-price calculations for construction project bids",
+        "Collaborating with Aardug on architecture design and integration",
+        "Working in a cross-functional Agile team with regular sprint cycles",
+      ],
+      tech: ["Python", "Odoo ORM", "XML Views", "PostgreSQL", "Agile/Scrum"],
+    },
   },
   {
-    key: "education",
-    label: "Education",
-    image: educationImage,
-    content: (
-      <>
-        <div className="max-w-[620px] text-left">
-          <span className="text-neutral-800 text-base lg:text-lg font-normal font-['Work_Sans'] leading-normal">
-            I am currently pursuing my IT Business degree at the University of
-            Twente, graduating in 2026. After that, I plan to pursue a Master's
-            in Cybersecurity at a Dutch university. Meanwhile, I'm actively
-            learning cybersecurity through hands-on practice and ethical
-            testing.
-          </span>
-        </div>
-        <div className="w-full max-w-[620px] space-y-3 mt-4">
-          {/* Education 1 */}
-          <div>
-            <div className="text-neutral-800 text-base lg:text-lg font-semibold font-['Work_Sans'] mb-1">
-              Bachelor of IT Business - University of Twente (2026)
-            </div>
-            <div className="text-gray-600 text-sm font-['Work_Sans']">
-              Currently studying IT Business with focus on technology management
-              and digital transformation.
-            </div>
-          </div>
-          {/* Education 2 */}
-          <div>
-            <div className="text-neutral-800 text-base lg:text-lg font-semibold font-['Work_Sans'] mb-1">
-              Master's in Cybersecurity - Netherlands (Planned 2026+)
-            </div>
-            <div className="text-gray-600 text-sm font-['Work_Sans']">
-              Planning to pursue advanced degree in cybersecurity at a Dutch
-              university.
-            </div>
-          </div>
-          {/* Education 3 */}
-          <div>
-            <div className="text-neutral-800 text-base lg:text-lg font-semibold font-['Work_Sans'] mb-1">
-              Self-Directed Cybersecurity Learning
-            </div>
-            <div className="text-gray-600 text-sm font-['Work_Sans']">
-              Actively practicing through cybersecurity labs and ethical
-              penetration testing platforms.
-            </div>
-          </div>
-        </div>
-      </>
-    ),
-  },
-  {
-    key: "more",
-    label: "More about me",
-    image: moreaboutmeImage,
-    content: (
-      <>
-        <div className="max-w-[620px] text-left w-full">
-          <span className="text-neutral-800 text-base lg:text-lg font-normal font-['Work_Sans'] leading-normal">
-            I'm a 20-year-old passionate about gaining valuable experience while
-            living abroad. I have a deep love for traveling and discovering new
-            cultures, which naturally led to my interest in learning new
-            languages. I speak four languages - Lithuanian (my mother tongue),
-            Russian, English, and Spanish. I enjoy the challenge of reading
-            books in different languages as it helps me improve my language
-            skills while exploring diverse perspectives and stories.
-          </span>
-        </div>
-        <div className="w-full max-w-[620px] space-y-3 mt-4 lg:w-full">
-          <div>
-            <div className="text-neutral-800 text-base lg:text-lg font-semibold font-['Work_Sans'] mb-1">
-              Professional Football Background
-            </div>
-            <div className="text-gray-600 text-sm font-['Work_Sans']">
-              Former professional football player with experience in discipline,
-              teamwork, and perseverance.
-            </div>
-          </div>
-          <div>
-            <div className="text-neutral-800 text-base lg:text-lg font-semibold font-['Work_Sans'] mb-1">
-              International Experience & Growth
-            </div>
-            <div className="text-gray-600 text-sm font-['Work_Sans']">
-              At 20, I'm focused on gaining meaningful experience while living
-              abroad and embracing new challenges.
-            </div>
-          </div>
-        </div>
-      </>
-    ),
+    role: "DevOps Course — 3-month Intensive",
+    org: "Deutsche Telekom",
+    year: "2025",
+    desc: "Containerised a full-stack Go/React app, deployed across EKS environments with Helm/Helmfile, built multi-stage GitLab CI/CD pipelines, and implemented end-to-end secrets management.",
+    details: {
+      overview:
+        "Completed Deutsche Telekom's intensive 3-month DevOps Academy programme, delivering a production-grade Kubernetes platform on AWS. Built the full DevOps lifecycle from containerisation through multi-environment deployment, CI/CD automation, infrastructure provisioning, secrets management, and observability.",
+      highlights: [
+        "Containerised a full-stack Go/React application with multi-stage Dockerfiles; built and pushed images via Kaniko on GitLab CI",
+        "Deployed across dev and prod Amazon EKS environments using three custom Helm charts published to GitLab Package Registry, orchestrated with Helmfile",
+        "Designed a multi-stage GitLab CI/CD pipeline (build → test → dockerization → deploy → smoke-test) with shared configuration across repos",
+        "Provisioned a self-hosted GitLab runner on AWS EC2 using Terraform and Ansible, scoped to smoke-test jobs via runner tags",
+        "Implemented end-to-end secrets management with SOPS + age encryption, Ansible Vault, and GitLab masked/protected CI variables — zero plaintext secrets in any repository",
+        "Integrated with the shared cluster's kube-prometheus-stack via namespace-scoped PrometheusRule resources, working within Kyverno admission policies",
+      ],
+      tech: [
+        "Docker",
+        "Kubernetes",
+        "Helm / Helmfile",
+        "GitLab CI/CD",
+        "AWS EKS / EC2",
+        "Terraform",
+        "Ansible",
+        "SOPS + age",
+        "Kaniko",
+        "Prometheus",
+        "Kyverno",
+        "Go",
+        "React",
+        "nginx",
+      ],
+    },
   },
 ];
 
 function AboutMeSection() {
-  const [activeSection, setActiveSection] = useState("skills");
-  const [hasAnimatedIn, setHasAnimatedIn] = useState(false);
-  const current = sections.find((s) => s.key === activeSection);
-
-  useEffect(() => {
-    setHasAnimatedIn(true);
-  }, []);
-
-  const handleSectionChange = (sectionKey) => {
-    setActiveSection(sectionKey);
-
-    // Scroll to the top of the about section for better view
-    setTimeout(() => {
-      const aboutElement = document.getElementById("about");
-      if (aboutElement) {
-        // Get the exact position of the about section
-        const rect = aboutElement.getBoundingClientRect();
-        const scrollTop =
-          window.pageYOffset || document.documentElement.scrollTop;
-        const targetPosition = scrollTop + rect.top - 80; // 80px offset from top to show more area
-
-        window.scrollTo({
-          top: targetPosition,
-          behavior: "smooth",
-        });
-      }
-    }, 100);
-  };
+  const [selectedExp, setSelectedExp] = useState(null);
 
   return (
-    <section id="about" className="py-12 px-4 lg:px-20 bg-gray-50">
-      {/* Container for the two-column layout */}
-      <div className="flex flex-col-reverse lg:flex-row items-center lg:items-start gap-8 lg:gap-12 max-w-7xl mx-auto">
-        {/* Left side - Content (Animated) */}
+    <section id="about" className="py-16 sm:py-20 px-4 lg:px-20 bg-gray-50">
+      <div className="max-w-6xl mx-auto">
+        {/* Section Header */}
         <motion.div
-          key={current.key + "-content"}
-          initial={hasAnimatedIn ? { opacity: 0, x: -40 } : false}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -40 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="flex-1 flex flex-col justify-start items-start gap-4 lg:gap-6 text-center lg:text-left lg:pr-8"
+          className="mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
         >
-          {/* Section title above the content - Desktop only */}
-          <div className="mb-6 text-center lg:text-left hidden lg:block">
-            <h2 className="text-2xl lg:text-3xl font-bold font-['Work_Sans'] text-blue-600 mb-2">
-              {current.label}
-            </h2>
-            {/* Subtitle based on section */}
-            {(() => {
-              if (current.key === "skills") {
-                return (
-                  <div className="text-3xl lg:text-4xl font-semibold font-['Work_Sans'] text-neutral-800">
-                    Gaining experience in Cybersecurity
-                  </div>
-                );
-              } else if (current.key === "certifications") {
-                return (
-                  <div className="text-3xl lg:text-4xl font-semibold font-['Work_Sans'] text-neutral-800">
-                    Industry Recognized Certifications
-                  </div>
-                );
-              } else if (current.key === "education") {
-                return (
-                  <div className="text-3xl lg:text-4xl font-semibold font-['Work_Sans'] text-neutral-800">
-                    Current Studies & Future Plans
-                  </div>
-                );
-              } else if (current.key === "more") {
-                return (
-                  <div className="text-3xl lg:text-4xl font-semibold font-['Work_Sans'] text-neutral-800">
-                    Beyond Cybersecurity Personal Interests
-                  </div>
-                );
-              }
-              return null;
-            })()}
-          </div>
-
-          {/* Section Content */}
-          {current.content}
-
-          {/* Navigation: Dots for mobile, buttons for desktop */}
-          {/* Mobile: Dots with arrows */}
-          <div
-            className="flex items-center gap-4 mt-6 justify-center w-full lg:hidden"
-            data-buttons-container
-          >
-            {/* Left Arrow */}
-            <button
-              aria-label="Previous section"
-              onClick={() => {
-                const idx = sections.findIndex((s) => s.key === activeSection);
-                if (idx > 0) handleSectionChange(sections[idx - 1].key);
-              }}
-              disabled={
-                sections.findIndex((s) => s.key === activeSection) === 0
-              }
-              className={`p-2 rounded-full transition-all duration-200 ${
-                sections.findIndex((s) => s.key === activeSection) === 0
-                  ? "text-gray-400 cursor-not-allowed"
-                  : "text-blue-600 hover:text-blue-700 hover:bg-blue-50 cursor-pointer"
-              }`}
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path d="M15 18l-6-6 6-6" />
-              </svg>
-            </button>
-
-            {/* Dots */}
-            {sections.map((section) => (
-              <motion.button
-                key={section.key}
-                onClick={() => handleSectionChange(section.key)}
-                className="focus:outline-none"
-                initial={false}
-                animate={
-                  activeSection === section.key
-                    ? { width: 140, height: 48, borderRadius: 32 }
-                    : { width: 20, height: 20, borderRadius: 9999 }
-                }
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                style={{
-                  height: activeSection === section.key ? 48 : 20,
-                  backgroundColor:
-                    activeSection === section.key ? "#2563eb" : "#e5e7eb",
-                  color: activeSection === section.key ? "white" : "#2563eb",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontWeight: 700,
-                  fontFamily: "Work Sans",
-                  fontSize: activeSection === section.key ? 22 : 14,
-                  overflow: "hidden",
-                  transition:
-                    "background 0.2s, height 0.2s, width 0.2s, font-size 0.2s",
-                  border:
-                    activeSection === section.key
-                      ? "2px solid #2563eb"
-                      : "2px solid #e5e7eb",
-                  boxShadow:
-                    activeSection === section.key
-                      ? "0 2px 8px #2563eb22"
-                      : "none",
-                  minWidth: 20,
-                  maxWidth: 180,
-                  padding: 0,
-                  margin: 0,
-                  outline: "none",
-                  cursor: "pointer",
-                }}
-              >
-                <span
-                  style={{
-                    opacity: activeSection === section.key ? 1 : 0,
-                    transition: "opacity 0.2s",
-                    whiteSpace: "nowrap",
-                    marginLeft: 12,
-                    marginRight: 12,
-                    color: "white",
-                    fontSize: 20,
-                    fontWeight: 700,
-                    fontFamily: "Work Sans",
-                    display: activeSection === section.key ? "inline" : "none",
-                  }}
-                >
-                  {section.label}
-                </span>
-              </motion.button>
-            ))}
-
-            {/* Right Arrow */}
-            <button
-              aria-label="Next section"
-              onClick={() => {
-                const idx = sections.findIndex((s) => s.key === activeSection);
-                if (idx < sections.length - 1)
-                  handleSectionChange(sections[idx + 1].key);
-              }}
-              disabled={
-                sections.findIndex((s) => s.key === activeSection) ===
-                sections.length - 1
-              }
-              className={`p-2 rounded-full transition-all duration-200 ${
-                sections.findIndex((s) => s.key === activeSection) ===
-                sections.length - 1
-                  ? "text-gray-400 cursor-not-allowed"
-                  : "text-blue-600 hover:text-blue-700 hover:bg-blue-50 cursor-pointer"
-              }`}
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path d="M9 18l6-6-6-6" />
-              </svg>
-            </button>
-          </div>
-          {/* Desktop: Buttons */}
-          <div
-            className="hidden lg:flex flex-wrap gap-3 mt-6 justify-start"
-            data-buttons-container
-          >
-            {sections.map((section) => (
-              <motion.button
-                key={section.key}
-                className={`px-4 py-2 rounded-[50px] text-base font-semibold font-['Work_Sans'] whitespace-nowrap ${
-                  activeSection === section.key
-                    ? "bg-blue-600 text-white"
-                    : "bg-white outline outline-1 outline-blue-600 text-blue-600"
-                }`}
-                whileHover={{
-                  scale: 1.05,
-                  backgroundColor:
-                    activeSection === section.key ? "#1d4ed8" : "#eff6ff",
-                  color: activeSection === section.key ? "#ffffff" : "#2563eb",
-                }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                onClick={() => handleSectionChange(section.key)}
-                style={{
-                  backgroundColor:
-                    activeSection === section.key ? "#2563eb" : "white",
-                  color: activeSection === section.key ? "white" : "#2563eb",
-                }}
-              >
-                {section.label}
-              </motion.button>
-            ))}
-          </div>
+          <h2 className="text-blue-600 text-lg font-semibold font-['Work_Sans'] uppercase tracking-widest mb-2">
+            About Me
+          </h2>
+          <p className="text-neutral-800 text-2xl sm:text-3xl lg:text-4xl font-bold font-['Work_Sans'] mb-4">
+            DevOps Student & Aspiring DevSecOps Engineer
+          </p>
+          <p className="text-gray-600 text-base lg:text-lg font-normal font-['Work_Sans'] leading-relaxed max-w-3xl">
+            IT student at the University of Twente (BSc expected 2026), with
+            hands-on experience from Deutsche Telekom's intensive DevOps
+            programme. I bring discipline from a professional football
+            background, international experience living abroad, and fluency in
+            five languages: Lithuanian, English, Russian, Spanish, and Dutch.
+          </p>
         </motion.div>
 
-        {/* Right side - Image (Animated) with section title above */}
+        {/* Experience */}
         <motion.div
-          key={current.key + "-image"}
-          initial={hasAnimatedIn ? { opacity: 0, x: 40 } : false}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: 40 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="relative flex-shrink-0 flex flex-col items-center"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          viewport={{ once: true }}
         >
-          {/* Section title above the image - Mobile only */}
-          <div className="mb-6 text-center lg:hidden">
-            <h2 className="text-2xl font-bold font-['Work_Sans'] text-blue-600 mb-2">
-              {current.label}
-            </h2>
-            {/* Subtitle based on section */}
-            {(() => {
-              if (current.key === "skills") {
-                return (
-                  <div className="text-3xl font-semibold font-['Work_Sans'] text-neutral-800">
-                    Gaining experience in Cybersecurity
-                  </div>
-                );
-              } else if (current.key === "certifications") {
-                return (
-                  <div className="text-3xl font-semibold font-['Work_Sans'] text-neutral-800">
-                    Industry Recognized Certifications
-                  </div>
-                );
-              } else if (current.key === "education") {
-                return (
-                  <div className="text-3xl font-semibold font-['Work_Sans'] text-neutral-800">
-                    Current Studies & Future Plans
-                  </div>
-                );
-              } else if (current.key === "more") {
-                return (
-                  <div className="text-3xl font-semibold font-['Work_Sans'] text-neutral-800">
-                    Beyond Cybersecurity Personal Interests
-                  </div>
-                );
-              }
-              return null;
-            })()}
+          <h3 className="text-neutral-800 text-xl font-bold font-['Work_Sans'] mb-6">
+            Experience
+          </h3>
+          <div className="space-y-4">
+            {experience.map((exp, index) => (
+              <motion.div
+                key={index}
+                className="bg-white rounded-xl p-5 border border-gray-100 cursor-pointer group"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.1 + index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{
+                  borderColor: "#3b82f6",
+                  boxShadow: "0 4px 20px rgba(59, 130, 246, 0.1)",
+                }}
+                onClick={() => setSelectedExp(exp)}
+              >
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-2">
+                  <h4 className="text-neutral-800 text-base font-semibold font-['Work_Sans'] group-hover:text-blue-600 transition-colors duration-200">
+                    {exp.role}
+                  </h4>
+                  <span className="text-blue-600 text-sm font-medium font-['Work_Sans'] whitespace-nowrap">
+                    {exp.year}
+                  </span>
+                </div>
+                <p className="text-gray-500 text-sm font-medium font-['Work_Sans'] mb-1">
+                  {exp.org}
+                </p>
+                <p className="text-gray-600 text-sm font-normal font-['Work_Sans'] leading-relaxed">
+                  {exp.desc}
+                </p>
+                <div className="mt-3 flex items-center gap-1 text-blue-600 text-xs font-semibold font-['Work_Sans'] opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  Click for details
+                  <svg
+                    className="w-3 h-3"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </div>
+              </motion.div>
+            ))}
           </div>
-
-          <img
-            key={current.key}
-            className="w-[320px] h-[320px] lg:w-[380px] lg:h-[380px] rounded-[160px] lg:rounded-[190px] object-cover"
-            src={current.image}
-            alt={current.label}
-          />
         </motion.div>
       </div>
+
+      {/* Detail Modal */}
+      <AnimatePresence>
+        {selectedExp && (
+          <motion.div
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedExp(null)}
+          >
+            <motion.div
+              className="bg-white rounded-2xl w-full max-w-2xl max-h-[85vh] overflow-y-auto shadow-2xl"
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Modal Header */}
+              <div className="sticky top-0 bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between rounded-t-2xl z-10">
+                <div>
+                  <h3 className="text-lg font-bold font-['Work_Sans'] text-neutral-800">
+                    {selectedExp.role}
+                  </h3>
+                  <p className="text-sm text-gray-500 font-['Work_Sans']">
+                    {selectedExp.org} · {selectedExp.year}
+                  </p>
+                </div>
+                <button
+                  onClick={() => setSelectedExp(null)}
+                  className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
+                >
+                  <svg
+                    className="w-5 h-5 text-gray-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Modal Body */}
+              <div className="px-6 py-5 space-y-6">
+                {/* Overview */}
+                <div>
+                  <h4 className="text-sm font-bold font-['Work_Sans'] text-blue-600 uppercase tracking-wide mb-2">
+                    Overview
+                  </h4>
+                  <p className="text-gray-600 text-sm font-normal font-['Work_Sans'] leading-relaxed">
+                    {selectedExp.details.overview}
+                  </p>
+                </div>
+
+                {/* Key Highlights */}
+                <div>
+                  <h4 className="text-sm font-bold font-['Work_Sans'] text-blue-600 uppercase tracking-wide mb-3">
+                    Key Highlights
+                  </h4>
+                  <ul className="space-y-2">
+                    {selectedExp.details.highlights.map((item, i) => (
+                      <li
+                        key={i}
+                        className="flex items-start gap-2 text-gray-600 text-sm font-normal font-['Work_Sans'] leading-relaxed"
+                      >
+                        <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-1.5 flex-shrink-0"></span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Technologies */}
+                <div>
+                  <h4 className="text-sm font-bold font-['Work_Sans'] text-blue-600 uppercase tracking-wide mb-3">
+                    Technologies Used
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedExp.details.tech.map((tech, i) => (
+                      <span
+                        key={i}
+                        className="px-3 py-1 bg-gray-50 text-neutral-700 text-sm font-medium font-['Work_Sans'] rounded-full border border-gray-200"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
