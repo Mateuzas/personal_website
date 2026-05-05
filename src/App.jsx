@@ -1,7 +1,7 @@
 import TopSection from "./components/TopSection";
 import HeroSection from "./components/HeroSection";
 import AboutMeSection from "./components/AboutMeSection";
-import SkillsSection from "./components/SkillsSection";
+import SkillsSection from "./components/Skillssection";
 import ContactMeSection from "./components/ContactMeSection";
 import FooterSection from "./components/FooterSection";
 
