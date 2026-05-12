@@ -97,7 +97,7 @@ function AboutMeSection() {
             hands-on experience from Deutsche Telekom's intensive DevOps
             programme. I bring discipline from a professional football
             background, international experience living abroad, and fluency in
-            five languages: Lithuanian, English, Russian, Spanish, and Dutch.
+            four languages: Lithuanian, English, Russian, Spanish.
           </p>
         </motion.div>
 
